@@ -22,8 +22,9 @@
 		0E35E75D2D11D45C0003B857 /* ParticipateButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E35E7562D11D45C0003B857 /* ParticipateButton.swift */; };
 		0E35E75E2D11D45C0003B857 /* TimeRemainingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E35E7582D11D45C0003B857 /* TimeRemainingView.swift */; };
 		0E35E7612D11D75C0003B857 /* Mocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E35E7602D11D75C0003B857 /* Mocks.swift */; };
+		0E35E7632D11E5430003B857 /* ParticipationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E35E7622D11E5430003B857 /* ParticipationState.swift */; };
+		0E35E7652D11E54F0003B857 /* Participation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E35E7642D11E54F0003B857 /* Participation.swift */; };
 		14374FB22B989FD500131332 /* New_Apps_TestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14374FB12B989FD500131332 /* New_Apps_TestApp.swift */; };
-		14374FB42B989FD500131332 /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14374FB32B989FD500131332 /* FeedView.swift */; };
 		14374FB62B989FD700131332 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14374FB52B989FD700131332 /* Assets.xcassets */; };
 		14374FBA2B989FD700131332 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14374FB92B989FD700131332 /* Preview Assets.xcassets */; };
 		14374FC42B989FD700131332 /* New_Apps_TestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14374FC32B989FD700131332 /* New_Apps_TestTests.swift */; };
@@ -70,9 +71,10 @@
 		0E35E7572D11D45C0003B857 /* ParticipationsGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipationsGridView.swift; sourceTree = "<group>"; };
 		0E35E7582D11D45C0003B857 /* TimeRemainingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeRemainingView.swift; sourceTree = "<group>"; };
 		0E35E7602D11D75C0003B857 /* Mocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mocks.swift; sourceTree = "<group>"; };
+		0E35E7622D11E5430003B857 /* ParticipationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipationState.swift; sourceTree = "<group>"; };
+		0E35E7642D11E54F0003B857 /* Participation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Participation.swift; sourceTree = "<group>"; };
 		14374FAE2B989FD500131332 /* New Apps Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "New Apps Test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		14374FB12B989FD500131332 /* New_Apps_TestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = New_Apps_TestApp.swift; sourceTree = "<group>"; };
-		14374FB32B989FD500131332 /* FeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
 		14374FB52B989FD700131332 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		14374FB72B989FD700131332 /* New_Apps_Test.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = New_Apps_Test.entitlements; sourceTree = "<group>"; };
 		14374FB92B989FD700131332 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -138,7 +140,6 @@
 			isa = PBXGroup;
 			children = (
 				048E7C652C2F08B500B653F4 /* RootView.swift */,
-				14374FB32B989FD500131332 /* FeedView.swift */,
 				048E7C6D2C2F3CE900B653F4 /* SharePhotoView.swift */,
 				14BEC9942C2DC39B009D8493 /* ThreadChatView.swift */,
 				048E7C6B2C2F3C6000B653F4 /* FriendsView.swift */,
@@ -161,6 +162,8 @@
 		0E2E59242D11C803006A3F95 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				0E35E7642D11E54F0003B857 /* Participation.swift */,
+				0E35E7622D11E5430003B857 /* ParticipationState.swift */,
 				0E2E59252D11C80B006A3F95 /* Challenge.swift */,
 			);
 			path = Models;
@@ -415,9 +418,9 @@
 				14BEC99B2C2DC3E1009D8493 /* SharedPhoto.swift in Sources */,
 				0E2E59262D11C80B006A3F95 /* Challenge.swift in Sources */,
 				0E35E7512D11CFF30003B857 /* ChallengeViewModel.swift in Sources */,
-				14374FB42B989FD500131332 /* FeedView.swift in Sources */,
 				14E2F7362B9F6385007CCA2C /* ChatService.swift in Sources */,
 				0E35E7532D11D00B0003B857 /* ChallengeView.swift in Sources */,
+				0E35E7652D11E54F0003B857 /* Participation.swift in Sources */,
 				0E35E7612D11D75C0003B857 /* Mocks.swift in Sources */,
 				14BEC9972C2DC3B5009D8493 /* User.swift in Sources */,
 				0E35E75A2D11D45C0003B857 /* ParticipationsGridView.swift in Sources */,
@@ -425,6 +428,7 @@
 				0E35E75C2D11D45C0003B857 /* ErrorView.swift in Sources */,
 				0E35E75D2D11D45C0003B857 /* ParticipateButton.swift in Sources */,
 				0E35E75E2D11D45C0003B857 /* TimeRemainingView.swift in Sources */,
+				0E35E7632D11E5430003B857 /* ParticipationState.swift in Sources */,
 				14BEC9952C2DC39B009D8493 /* ThreadChatView.swift in Sources */,
 				048E7C6C2C2F3C6000B653F4 /* FriendsView.swift in Sources */,
 				048E7C682C2F08EA00B653F4 /* SettingsView.swift in Sources */,

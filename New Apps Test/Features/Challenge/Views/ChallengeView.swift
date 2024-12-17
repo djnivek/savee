@@ -51,10 +51,15 @@ struct ChallengeView: View {
                 description: challenge.description
             )
             
-            ParticipateButton()
+            ParticipateButton(
+                hasParticipated: viewModel.hasParticipated
+            ) { imageData in
+                Task {
+                    await viewModel.submitParticipation(image: imageData)
+                }
+            }
             
-            ParticipationsGridView()
-            
+            ParticipationsGridView(participations: viewModel.participations)
         }
     }
 }

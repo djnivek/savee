@@ -16,9 +16,12 @@
 import SwiftUI
 
 struct RootView: View {
+    
+    let challengeService = MockChallengeService()
+    
     var body: some View {
         TabView {
-            FeedView()
+            ChallengeView(viewModel: .init(challengeService: challengeService))
                 .tabItem {
                     Image(systemName: "house")
                 }

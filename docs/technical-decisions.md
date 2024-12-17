@@ -28,4 +28,20 @@ Here is the template for the technical decisions documentation:
   - Gain: Modularity, reusability, smaller app size
   - Lose: Some additional complexity in project setup and maintenance
 
-...
+### 2. MVVM Architecture with Clear Separation of Concerns
+
+- **Decision**: Adopt strict MVVM architecture with clear layer separation and responsibilities
+- **Alternatives Considered**: 
+  - Clean Architecture with VIPER
+  - Redux/TCA (The Composable Architecture)
+- **Rationale**: 
+  - Better testability through clear separation of concerns
+  - Protocol usage enables better modularity and easier mocking for tests
+  - View/ViewModel separation simplifies maintenance and code evolution
+- **Consequences**:
+  - More rigid but clearer project structure
+  - Slight increase in initial boilerplate
+  - Easier onboarding for new developers
+- **Trade-offs**:
+  - Gain: Testability, maintainability, clear separation of concerns
+  - Lose: More files to manage, not the "latest architecture paradigm"

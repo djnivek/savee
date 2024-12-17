@@ -1,8 +1,24 @@
-# Voodoo iOS Founding Engineer Test
+# Savee (Project Codename)
 
-## Instructions
+A photo-sharing application prototype.
 
-Please find the detailed instructions here
- https://docs.google.com/document/d/1CYvcq3FTZyIu6MM2DQBv_DvDhdj2ePZyWGDCFfr0GgM/edit#heading=h.yvya2xlyjrgt
+## 🎯 Overview
 
-Good luck, we're looking forward to reviewing your solution!
+This project demonstrates how to combine product vision, engaging user experience, and technical efficiency to create a photo-sharing application with strong commercial potential. Road to 1B$ ARR 🚀
+
+## 📱 Product Design & Ideation
+
+To understand the application concept, user needs analysis and business model:
+👉 [View Product Design Documentation](docs/product-design.md)
+
+## ⚙️ Technical Architecture
+
+To discover our technical choices and implementation details:
+👉 [View Technical Documentation](docs/technical-decisions.md)
+
+## 📱 App Description
+
+[Coming soon]
+
+---
+*This project is a prototype developed as part of Voodoo's technical assessment process.*

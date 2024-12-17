@@ -11,6 +11,17 @@
 		048E7C682C2F08EA00B653F4 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048E7C672C2F08EA00B653F4 /* SettingsView.swift */; };
 		048E7C6C2C2F3C6000B653F4 /* FriendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048E7C6B2C2F3C6000B653F4 /* FriendsView.swift */; };
 		048E7C6E2C2F3CE900B653F4 /* SharePhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048E7C6D2C2F3CE900B653F4 /* SharePhotoView.swift */; };
+		0E2E59262D11C80B006A3F95 /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2E59252D11C80B006A3F95 /* Challenge.swift */; };
+		0E2E59292D11C82D006A3F95 /* ChallengeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2E59282D11C82D006A3F95 /* ChallengeService.swift */; };
+		0E2E592B2D11C958006A3F95 /* MockChallengeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2E592A2D11C958006A3F95 /* MockChallengeService.swift */; };
+		0E35E7512D11CFF30003B857 /* ChallengeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E35E7502D11CFF30003B857 /* ChallengeViewModel.swift */; };
+		0E35E7532D11D00B0003B857 /* ChallengeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E35E7522D11D00B0003B857 /* ChallengeView.swift */; };
+		0E35E75A2D11D45C0003B857 /* ParticipationsGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E35E7572D11D45C0003B857 /* ParticipationsGridView.swift */; };
+		0E35E75B2D11D45C0003B857 /* ChallengeInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E35E7542D11D45C0003B857 /* ChallengeInfoView.swift */; };
+		0E35E75C2D11D45C0003B857 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E35E7552D11D45C0003B857 /* ErrorView.swift */; };
+		0E35E75D2D11D45C0003B857 /* ParticipateButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E35E7562D11D45C0003B857 /* ParticipateButton.swift */; };
+		0E35E75E2D11D45C0003B857 /* TimeRemainingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E35E7582D11D45C0003B857 /* TimeRemainingView.swift */; };
+		0E35E7612D11D75C0003B857 /* Mocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E35E7602D11D75C0003B857 /* Mocks.swift */; };
 		14374FB22B989FD500131332 /* New_Apps_TestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14374FB12B989FD500131332 /* New_Apps_TestApp.swift */; };
 		14374FB42B989FD500131332 /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14374FB32B989FD500131332 /* FeedView.swift */; };
 		14374FB62B989FD700131332 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14374FB52B989FD700131332 /* Assets.xcassets */; };
@@ -48,6 +59,17 @@
 		048E7C672C2F08EA00B653F4 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		048E7C6B2C2F3C6000B653F4 /* FriendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsView.swift; sourceTree = "<group>"; };
 		048E7C6D2C2F3CE900B653F4 /* SharePhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharePhotoView.swift; sourceTree = "<group>"; };
+		0E2E59252D11C80B006A3F95 /* Challenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge.swift; sourceTree = "<group>"; };
+		0E2E59282D11C82D006A3F95 /* ChallengeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeService.swift; sourceTree = "<group>"; };
+		0E2E592A2D11C958006A3F95 /* MockChallengeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockChallengeService.swift; sourceTree = "<group>"; };
+		0E35E7502D11CFF30003B857 /* ChallengeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeViewModel.swift; sourceTree = "<group>"; };
+		0E35E7522D11D00B0003B857 /* ChallengeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeView.swift; sourceTree = "<group>"; };
+		0E35E7542D11D45C0003B857 /* ChallengeInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeInfoView.swift; sourceTree = "<group>"; };
+		0E35E7552D11D45C0003B857 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
+		0E35E7562D11D45C0003B857 /* ParticipateButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipateButton.swift; sourceTree = "<group>"; };
+		0E35E7572D11D45C0003B857 /* ParticipationsGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipationsGridView.swift; sourceTree = "<group>"; };
+		0E35E7582D11D45C0003B857 /* TimeRemainingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeRemainingView.swift; sourceTree = "<group>"; };
+		0E35E7602D11D75C0003B857 /* Mocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mocks.swift; sourceTree = "<group>"; };
 		14374FAE2B989FD500131332 /* New Apps Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "New Apps Test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		14374FB12B989FD500131332 /* New_Apps_TestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = New_Apps_TestApp.swift; sourceTree = "<group>"; };
 		14374FB32B989FD500131332 /* FeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
@@ -125,6 +147,79 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		0E2E59232D11C7FC006A3F95 /* Challenge */ = {
+			isa = PBXGroup;
+			children = (
+				0E35E74F2D11CFEC0003B857 /* ViewModels */,
+				0E35E74E2D11CFE30003B857 /* Views */,
+				0E2E59272D11C827006A3F95 /* Service */,
+				0E2E59242D11C803006A3F95 /* Models */,
+			);
+			path = Challenge;
+			sourceTree = "<group>";
+		};
+		0E2E59242D11C803006A3F95 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0E2E59252D11C80B006A3F95 /* Challenge.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		0E2E59272D11C827006A3F95 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				0E2E592A2D11C958006A3F95 /* MockChallengeService.swift */,
+				0E2E59282D11C82D006A3F95 /* ChallengeService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		0E35E74D2D11CFDB0003B857 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				0E2E59232D11C7FC006A3F95 /* Challenge */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		0E35E74E2D11CFE30003B857 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0E35E7592D11D45C0003B857 /* Components */,
+				0E35E7522D11D00B0003B857 /* ChallengeView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		0E35E74F2D11CFEC0003B857 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				0E35E7502D11CFF30003B857 /* ChallengeViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		0E35E7592D11D45C0003B857 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				0E35E7542D11D45C0003B857 /* ChallengeInfoView.swift */,
+				0E35E7552D11D45C0003B857 /* ErrorView.swift */,
+				0E35E7562D11D45C0003B857 /* ParticipateButton.swift */,
+				0E35E7572D11D45C0003B857 /* ParticipationsGridView.swift */,
+				0E35E7582D11D45C0003B857 /* TimeRemainingView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		0E35E75F2D11D7590003B857 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				0E35E7602D11D75C0003B857 /* Mocks.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
 		14374FA52B989FD500131332 = {
 			isa = PBXGroup;
 			children = (
@@ -149,6 +244,8 @@
 		14374FB02B989FD500131332 /* New Apps Test */ = {
 			isa = PBXGroup;
 			children = (
+				0E35E75F2D11D7590003B857 /* Mocks */,
+				0E35E74D2D11CFDB0003B857 /* Features */,
 				14374FB12B989FD500131332 /* New_Apps_TestApp.swift */,
 				048E7C712C32ACB000B653F4 /* Views */,
 				048E7C702C32ACA700B653F4 /* Services */,
@@ -316,17 +413,28 @@
 			buildActionMask = 2147483647;
 			files = (
 				14BEC99B2C2DC3E1009D8493 /* SharedPhoto.swift in Sources */,
+				0E2E59262D11C80B006A3F95 /* Challenge.swift in Sources */,
+				0E35E7512D11CFF30003B857 /* ChallengeViewModel.swift in Sources */,
 				14374FB42B989FD500131332 /* FeedView.swift in Sources */,
 				14E2F7362B9F6385007CCA2C /* ChatService.swift in Sources */,
+				0E35E7532D11D00B0003B857 /* ChallengeView.swift in Sources */,
+				0E35E7612D11D75C0003B857 /* Mocks.swift in Sources */,
 				14BEC9972C2DC3B5009D8493 /* User.swift in Sources */,
+				0E35E75A2D11D45C0003B857 /* ParticipationsGridView.swift in Sources */,
+				0E35E75B2D11D45C0003B857 /* ChallengeInfoView.swift in Sources */,
+				0E35E75C2D11D45C0003B857 /* ErrorView.swift in Sources */,
+				0E35E75D2D11D45C0003B857 /* ParticipateButton.swift in Sources */,
+				0E35E75E2D11D45C0003B857 /* TimeRemainingView.swift in Sources */,
 				14BEC9952C2DC39B009D8493 /* ThreadChatView.swift in Sources */,
 				048E7C6C2C2F3C6000B653F4 /* FriendsView.swift in Sources */,
 				048E7C682C2F08EA00B653F4 /* SettingsView.swift in Sources */,
 				14374FB22B989FD500131332 /* New_Apps_TestApp.swift in Sources */,
 				048E7C6E2C2F3CE900B653F4 /* SharePhotoView.swift in Sources */,
 				14BEC9992C2DC3D6009D8493 /* Thread.swift in Sources */,
+				0E2E59292D11C82D006A3F95 /* ChallengeService.swift in Sources */,
 				048E7C662C2F08B500B653F4 /* RootView.swift in Sources */,
 				14374FDD2B98A02600131332 /* UnsplashService.swift in Sources */,
+				0E2E592B2D11C958006A3F95 /* MockChallengeService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

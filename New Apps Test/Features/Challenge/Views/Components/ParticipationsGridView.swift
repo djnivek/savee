@@ -1,6 +1,8 @@
 import SwiftUI
 
 struct ParticipationsGridView: View {
+    let participations: [ParticipationState]
+    
     private let columns = [
         GridItem(.flexible(), spacing: 4),
         GridItem(.flexible(), spacing: 4),
@@ -18,8 +20,18 @@ struct ParticipationsGridView: View {
             }
             
             LazyVGrid(columns: columns, spacing: 4) {
-                ForEach(0..<9) { _ in
-                    BlurredImageCell()
+                ForEach(Array(participations.enumerated()), id: \.offset) { index, participation in
+                    switch participation {
+                    case .blurred:
+                        BlurredImageCell()
+                    case .visible(let imageData):
+                        if let uiImage = UIImage(data: imageData) {
+                            Image(uiImage: uiImage)
+                                .resizable()
+                                .aspectRatio(1, contentMode: .fill)
+                                .clipShape(RoundedRectangle(cornerRadius: 8))
+                        }
+                    }
                 }
             }
         }

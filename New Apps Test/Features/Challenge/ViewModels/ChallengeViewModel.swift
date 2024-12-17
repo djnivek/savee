@@ -16,8 +16,14 @@ class ChallengeViewModel {
         case error(Error)
     }
     
+    var hasParticipated: Bool {
+        userParticipationIndex != nil
+    }
+    
     private let challengeService: ChallengeService
     private var timer: Timer?
+    var participations: [ParticipationState] = Array(repeating: .blurred, count: 9)
+    private var userParticipationIndex: Int?
     
     var state: State = .loading
     var timeRemaining: TimeInterval = 0
@@ -35,6 +41,27 @@ class ChallengeViewModel {
             startTimer(endTimestamp: challenge.endTimestamp)
         } catch {
             state = .error(error)
+        }
+    }
+    
+    @MainActor
+    func submitParticipation(image: Data) async {
+        do {
+            try await challengeService.submitParticipation(image, for: Challenge.mocked.id)
+            
+            if let existingIndex = userParticipationIndex {
+                participations[existingIndex] = .visible(image)
+            } else {
+                if let emptyIndex = participations.firstIndex(where: {
+                    if case .blurred = $0 { return true } else { return false }
+                }) {
+                    participations[emptyIndex] = .visible(image)
+                    userParticipationIndex = emptyIndex
+                }
+            }
+            // TODO: handle success with a haptic feedback
+        } catch {
+            // TODO: handle error
         }
     }
     

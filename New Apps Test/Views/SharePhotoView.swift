@@ -16,49 +16,71 @@
 import SwiftUI
 import PhotosUI
 
-struct SharePhotoView: View {
-
+struct ChallengeSubmissionView: View {
+    @Environment(\.dismiss) private var dismiss
     @State private var pickerItem: PhotosPickerItem?
     @State private var selectedImage: Image?
-    let completionAction: (Image) -> Void
-    @Environment(\.dismiss) var dismiss
-
+    @State private var imageData: Data?
+    private let completionAction: (Data) -> Void
+    
+    init(onSubmit: @escaping (Data) -> Void) {
+        self.completionAction = onSubmit
+    }
+    
     var body: some View {
-        VStack {
-            Text("Share")
-                .font(.title)
-
-            Spacer()
-
-            PhotosPicker("Pick a picture", selection: $pickerItem, matching: .images)
-
-            selectedImage?
-                .resizable()
-                .scaledToFit()
-                .padding()
-
-            Spacer()
-
-            Button {
-                guard let selectedImage = selectedImage else { return }
-                completionAction(selectedImage)
-                dismiss()
-            } label: {
-                Text("Share to friends")
+        VStack(spacing: 24) {
+            if let selectedImage {
+                selectedImage
+                    .resizable()
+                    .scaledToFit()
+                    .frame(maxHeight: 400)
+                    .clipShape(RoundedRectangle(cornerRadius: 16))
             }
-            .buttonStyle(BorderedButtonStyle())
-            .padding()
+            
+            Spacer()
+            
+            if selectedImage == nil {
+                PhotosPicker("Prendre une photo", selection: $pickerItem, matching: .images)
+                    .buttonStyle(.bordered)
+            }
+            
+            Button(action: submitPhoto) {
+                Label("Valider ma participation", systemImage: "checkmark")
+                    .font(.headline)
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                    .background(Color.accentColor)
+                    .foregroundColor(.white)
+                    .clipShape(RoundedRectangle(cornerRadius: 16))
+            }
             .disabled(selectedImage == nil)
-
         }
-        .onChange(of: pickerItem) {
-            Task {
-                selectedImage = try await pickerItem?.loadTransferable(type: Image.self)
+        .padding()
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(
+            RoundedRectangle(cornerRadius: 16)
+                .fill(.ultraThinMaterial)
+        )
+        .onChange(of: pickerItem) { loadSelectedPhoto() }
+    }
+    
+    private func loadSelectedPhoto() {
+        Task {
+            selectedImage = try await pickerItem?.loadTransferable(type: Image.self)
+            
+            if let data = try await pickerItem?.loadTransferable(type: Data.self) {
+                imageData = data
             }
         }
+    }
+    
+    private func submitPhoto() {
+        guard let data = imageData else { return }
+        completionAction(data)
+        dismiss()
     }
 }
 
 #Preview {
-    SharePhotoView { _ in }
+    ChallengeSubmissionView { _ in }
 }

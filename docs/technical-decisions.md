@@ -45,3 +45,49 @@ Here is the template for the technical decisions documentation:
 - **Trade-offs**:
   - Gain: Testability, maintainability, clear separation of concerns
   - Lose: More files to manage, not the "latest architecture paradigm"
+
+### 3. Dependency Inversion and Injection
+- **Decision**: Use dependency injection with protocol-based abstractions, following the Dependency Inversion Principle (DIP)
+
+- **Alternatives Considered**:
+  - Singleton pattern
+  - Direct concrete implementations
+
+- **Rationale**:
+  ```swift
+  // ✅ Good: Constructor injection with protocol
+  class ChallengeViewModel {
+      private let service: ChallengeService
+      
+      init(service: ChallengeService) {
+          self.service = service
+      }
+  }
+  
+  // ❌ Bad: Direct concrete dependency
+  class ChallengeViewModel {
+      private let service = ConcreteChallengeService()
+  }
+  ```
+  - High-level modules don't depend on low-level modules
+  - Both depend on abstractions (protocols)
+  - Abstractions don't depend on details
+  - Easy dependency swapping for testing and flexibility
+
+- **Consequences**:
+  - Need to manage dependency graph
+  - All dependencies must be passed explicitly
+  - Protocol definition required for each service
+  - Initial setup overhead for dependency container/composition root
+
+- **Trade-offs**:
+  Gains:
+  - Testability through easy dependency mocking
+  - Flexible configuration
+  - Clear component boundaries
+  - Better adherence to SOLID principles
+  
+  Losses:
+  - More initial setup code
+  - Need to manage dependency lifecycle
+  - Slightly more complex initialization

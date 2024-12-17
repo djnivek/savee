@@ -2,7 +2,7 @@
 
 ## **✨ Concept: The Collective Creative Challenge**
 
-**One Day, One Challenge** is a mobile application that delivers **one unique creative challenge** to its community every day at **10:00 AM GMT**. Users can submit their responses throughout the day, and the following day at 10:00 AM GMT, the collective **photo mosaic** for the previous challenge is revealed.
+*One Day, One Challenge*, now named **Hoost**, is a mobile application that delivers **one unique creative challenge** to its community every day at **10:00 AM GMT**. Users can submit their responses throughout the day, and the following day at 10:00 AM GMT, the collective **photo mosaic** for the previous challenge is revealed.
 
 ---
 
@@ -41,6 +41,20 @@
 - Draw your mood for the day.
 - Do a handstand in front of a door.
 - ...
+
+---
+
+## **🎯 Name & Branding**
+
+### **Why "Hoost"?**
+
+The name "Hoost" captures the essence of our app's ephemeral and dynamic nature:
+
+- **Etymology**: Inspired by french "ouste, du balais"
+- **Memorability**: Short, punchy, and easy to remember
+- **Pronunciation**: Simple and universal, works across languages
+- **Domain Assets**: Available as hoost.app and hoost.lol, allowing for flexible branding strategies
+- **Wordplay**: Can be used as a verb ("Let's Hoost today's challenge!")
 
 ---
 

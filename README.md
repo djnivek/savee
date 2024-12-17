@@ -8,6 +8,9 @@ This project demonstrates how to combine product vision, engaging user experienc
 
 ## 📱 Product Design & Ideation
 
+To understand the brainstorming process:
+👉 [View Ideas](docs/ideas.md)
+
 To understand the application concept, user needs analysis and business model:
 👉 [View Product Design Documentation](docs/product-design.md)
 

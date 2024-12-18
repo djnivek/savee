@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 @Observable
-class ChallengeViewModel {
+class TodayChallengeViewModel {
     enum State {
         case loading
         case loaded(Challenge)

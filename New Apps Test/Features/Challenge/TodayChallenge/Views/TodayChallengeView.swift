@@ -7,10 +7,10 @@
 
 import SwiftUI
 
-struct ChallengeView: View {
-    @State private var viewModel: ChallengeViewModel
+struct TodayChallengeView: View {
+    @State private var viewModel: TodayChallengeViewModel
     
-    init(viewModel: ChallengeViewModel) {
+    init(viewModel: TodayChallengeViewModel) {
         self.viewModel = viewModel
     }
     
@@ -76,7 +76,7 @@ extension Color {
 
 
 #Preview {
-    ChallengeView(viewModel: ChallengeViewModel(
+    TodayChallengeView(viewModel: TodayChallengeViewModel(
         challengeService: MockChallengeService()
     ))
 }

@@ -7,10 +7,10 @@
 
 import SwiftUI
 
-struct MosaicView: View {
-    @State private var viewModel: MosaicViewModel
+struct DiscoverView: View {
+    @State private var viewModel: DiscoverViewModel
     
-    init(viewModel: MosaicViewModel) {
+    init(viewModel: DiscoverViewModel) {
         self._viewModel = State(initialValue: viewModel)
     }
     
@@ -66,19 +66,7 @@ struct MosaicView: View {
     private func existingImagesGrid(_ images: [UnsplashImage]) -> some View {
         ForEach(images) { image in
             if let url = URL(string: image.urls.thumb) {
-                CachedAsyncImage(url: url) {
-                    ProgressView()
-                }
-                .id(image.id)
-                .frame(height: 120)
-                .aspectRatio(contentMode: .fill)
-                .clipShape(.rect(cornerRadius: 8))
-            } else {
-                Image(systemName: "photo")
-                    .foregroundStyle(.secondary)
-                    .id(image.id)
-                    .frame(height: 120)
-                    .clipShape(.rect(cornerRadius: 8))
+                ImageCell(url: url)
             }
         }
     }
@@ -104,8 +92,21 @@ struct MosaicView: View {
     }
 }
 
+struct ImageCell: View {
+    let url: URL
+    
+    var body: some View {
+        CachedAsyncImage(url: url) {
+            ProgressView()
+        }
+        .frame(height: 120)
+        .aspectRatio(contentMode: .fill)
+        .clipShape(.rect(cornerRadius: 8))
+    }
+}
+
 #Preview {
-    MosaicView(
+    DiscoverView(
         viewModel: .init(
             unsplashService: UnsplashService()
         )

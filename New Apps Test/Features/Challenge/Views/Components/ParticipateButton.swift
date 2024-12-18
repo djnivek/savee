@@ -29,7 +29,12 @@ struct ParticipateButton: View {
         }
         .disabled(hasParticipated)
         .sheet(isPresented: $showingSubmission) {
-            ChallengeSubmissionView(onSubmit: onParticipate)
+            ChallengeSubmissionView(
+                isPresented: $showingSubmission,
+                onSubmit: onParticipate
+            )
+            .presentationDetents([.medium, .large])
+            .presentationDragIndicator(.visible)
         }
     }
 }

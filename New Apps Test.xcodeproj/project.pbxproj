@@ -10,7 +10,7 @@
 		048E7C662C2F08B500B653F4 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048E7C652C2F08B500B653F4 /* RootView.swift */; };
 		048E7C682C2F08EA00B653F4 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048E7C672C2F08EA00B653F4 /* SettingsView.swift */; };
 		048E7C6C2C2F3C6000B653F4 /* FriendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048E7C6B2C2F3C6000B653F4 /* FriendsView.swift */; };
-		048E7C6E2C2F3CE900B653F4 /* SharePhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048E7C6D2C2F3CE900B653F4 /* SharePhotoView.swift */; };
+		048E7C6E2C2F3CE900B653F4 /* ChallengeSubmissionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048E7C6D2C2F3CE900B653F4 /* ChallengeSubmissionView.swift */; };
 		0E2E59262D11C80B006A3F95 /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2E59252D11C80B006A3F95 /* Challenge.swift */; };
 		0E2E59292D11C82D006A3F95 /* ChallengeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2E59282D11C82D006A3F95 /* ChallengeService.swift */; };
 		0E2E592B2D11C958006A3F95 /* MockChallengeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2E592A2D11C958006A3F95 /* MockChallengeService.swift */; };
@@ -64,7 +64,7 @@
 		048E7C652C2F08B500B653F4 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		048E7C672C2F08EA00B653F4 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		048E7C6B2C2F3C6000B653F4 /* FriendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsView.swift; sourceTree = "<group>"; };
-		048E7C6D2C2F3CE900B653F4 /* SharePhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharePhotoView.swift; sourceTree = "<group>"; };
+		048E7C6D2C2F3CE900B653F4 /* ChallengeSubmissionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeSubmissionView.swift; sourceTree = "<group>"; };
 		0E2E59252D11C80B006A3F95 /* Challenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge.swift; sourceTree = "<group>"; };
 		0E2E59282D11C82D006A3F95 /* ChallengeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeService.swift; sourceTree = "<group>"; };
 		0E2E592A2D11C958006A3F95 /* MockChallengeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockChallengeService.swift; sourceTree = "<group>"; };
@@ -151,7 +151,7 @@
 			children = (
 				0E35E76D2D123B660003B857 /* PolaroidCircle */,
 				048E7C652C2F08B500B653F4 /* RootView.swift */,
-				048E7C6D2C2F3CE900B653F4 /* SharePhotoView.swift */,
+				048E7C6D2C2F3CE900B653F4 /* ChallengeSubmissionView.swift */,
 				14BEC9942C2DC39B009D8493 /* ThreadChatView.swift */,
 				048E7C6B2C2F3C6000B653F4 /* FriendsView.swift */,
 				048E7C672C2F08EA00B653F4 /* SettingsView.swift */,
@@ -477,7 +477,7 @@
 				048E7C682C2F08EA00B653F4 /* SettingsView.swift in Sources */,
 				0E35E76C2D123B110003B857 /* HapticManaging.swift in Sources */,
 				14374FB22B989FD500131332 /* New_Apps_TestApp.swift in Sources */,
-				048E7C6E2C2F3CE900B653F4 /* SharePhotoView.swift in Sources */,
+				048E7C6E2C2F3CE900B653F4 /* ChallengeSubmissionView.swift in Sources */,
 				14BEC9992C2DC3D6009D8493 /* Thread.swift in Sources */,
 				0E2E59292D11C82D006A3F95 /* ChallengeService.swift in Sources */,
 				048E7C662C2F08B500B653F4 /* RootView.swift in Sources */,

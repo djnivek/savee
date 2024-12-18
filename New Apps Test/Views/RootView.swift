@@ -16,25 +16,74 @@
 import SwiftUI
 
 struct RootView: View {
-    
-    let challengeService = MockChallengeService()
+    @State private var selectedTab: Tab = .challenge
+    private let challengeService = MockChallengeService()
     
     var body: some View {
-        TabView {
-            ChallengeView(viewModel: .init(challengeService: challengeService))
-                .tabItem {
-                    Image(systemName: "house")
+        TabView(selection: $selectedTab) {
+            NavigationStack {
+                TodayChallengeView(
+                    viewModel: .init(challengeService: challengeService)
+                )
+                .navigationTitle("Hoost")
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        NavigationLink {
+                            SettingsView()
+                        } label: {
+                            Image(systemName: "gearshape.circle")
+                                .font(.title2)
+                                .foregroundStyle(.primary)
+                        }
+                    }
+                    
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        NavigationLink {
+                            FriendsView()
+                        } label: {
+                            Image(systemName: "person.2.circle")
+                                .font(.title2)
+                                .foregroundStyle(.primary)
+                        }
+                    }
                 }
-
-            FriendsView()
-                .tabItem {
-                    Image(systemName: "person.3.fill")
-                }
-
-            SettingsView()
-                .tabItem {
-                    Image(systemName: "gear")
-                }
+            }
+            .tabItem {
+                Label(Tab.challenge.title, systemImage: Tab.challenge.icon)
+            }
+            .tag(Tab.challenge)
+            
+            NavigationStack {
+                ExplorerView()
+                    .navigationTitle("Hoost")
+                    .navigationBarTitleDisplayMode(.inline)
+                    .toolbar {
+                        ToolbarItem(placement: .navigationBarLeading) {
+                            NavigationLink {
+                                SettingsView()
+                            } label: {
+                                Image(systemName: "gearshape.circle")
+                                    .font(.title2)
+                                    .foregroundStyle(.primary)
+                            }
+                        }
+                        
+                        ToolbarItem(placement: .navigationBarTrailing) {
+                            NavigationLink {
+                                FriendsView()
+                            } label: {
+                                Image(systemName: "person.2.circle")
+                                    .font(.title2)
+                                    .foregroundStyle(.primary)
+                            }
+                        }
+                    }
+            }
+            .tabItem {
+                Label(Tab.explorer.title, systemImage: Tab.explorer.icon)
+            }
+            .tag(Tab.explorer)
         }
     }
 }

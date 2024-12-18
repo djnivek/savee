@@ -8,7 +8,7 @@ import Foundation
 import SwiftUI
 
 @Observable
-final class MosaicViewModel {
+final class DiscoverViewModel {
     
     enum State {
         case idle

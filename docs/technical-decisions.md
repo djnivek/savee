@@ -91,3 +91,27 @@ Here is the template for the technical decisions documentation:
   - More initial setup code
   - Need to manage dependency lifecycle
   - Slightly more complex initialization
+
+  ### 4. Implementing `actor` for UnsplashService
+
+- **Decision**: Implement the `UnsplashService` as an `actor` to ensure thread safety and simplify concurrency management.
+- **Alternatives Considered**:
+  - Using a standard Swift class with manual thread safety mechanisms (e.g., `DispatchQueue`).
+  - Avoiding thread safety entirely and accepting potential race conditions.
+- **Rationale**:
+  - `actor` in Swift provides automatic thread safety, reducing the risk of race conditions without additional boilerplate code.
+  - Simplifies the implementation by eliminating the need for manual synchronization, such as queues.
+  - Aligns with modern Swift concurrency patterns and supports `async/await` for a cleaner API.
+  - Enhances maintainability by centralizing thread-safe operations in the `UnsplashService`.
+- **Consequences**:
+  - The `UnsplashService` becomes reliant on the Swift concurrency model, which may require a modern runtime (e.g., iOS 15 or later).
+  - Accessing properties and methods of the actor requires asynchronous calls with `await`, which could add complexity to some use cases.
+- **Trade-offs**:
+  - **Gain**: 
+    - Automatic thread safety.
+    - Cleaner and more maintainable code.
+    - Enhanced performance through optimized Swift concurrency primitives.
+    - Reduced concurrency bugs.
+  - **Lose**: 
+    - Limited compatibility with older platforms.
+    - Requires understanding and adopting the actor model and `async/await`.

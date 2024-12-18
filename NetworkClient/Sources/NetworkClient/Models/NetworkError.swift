@@ -7,8 +7,9 @@
 
 import Foundation
 
-public enum NetworkError: Error, LocalizedError {
+public enum NetworkError: Error, LocalizedError, Sendable {
     case invalidResponse
+    case invalidURL
     case decodingError(Error)
     case encodingError(Error)
     case badRequest
@@ -17,9 +18,13 @@ public enum NetworkError: Error, LocalizedError {
     case notFound
     case serverError(Int)
     case unexpectedStatusCode(Int)
+    case rateLimited(retryAfter: TimeInterval)
+    
     
     public var errorDescription: String? {
         switch self {
+        case .invalidURL:
+            return "L'URL est invalide"
         case .invalidResponse:
             return "La réponse du serveur est invalide"
         case .decodingError(let error):
@@ -38,6 +43,8 @@ public enum NetworkError: Error, LocalizedError {
             return "Erreur serveur (\(code))"
         case .unexpectedStatusCode(let code):
             return "Code de statut inattendu (\(code))"
+        case .rateLimited(let retryAfter):
+            return "Rate limit atteint. Réessayer dans \(Int(retryAfter)) secondes"
         }
     }
 }

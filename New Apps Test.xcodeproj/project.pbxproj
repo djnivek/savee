@@ -36,6 +36,9 @@
 		0E35E7822D12DC610003B857 /* InfiniteScrollModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E35E7812D12DC610003B857 /* InfiniteScrollModifier.swift */; };
 		0E35E7852D12E1900003B857 /* MasonryLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E35E7842D12E1900003B857 /* MasonryLayout.swift */; };
 		0E35E7892D12F8EA0003B857 /* CachedAsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E35E7882D12F8EA0003B857 /* CachedAsyncImage.swift */; };
+		0E35E78D2D1301B20003B857 /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E35E78C2D1301B20003B857 /* CustomSegmentedControl.swift */; };
+		0E35E78F2D1301C30003B857 /* CustomSegmentItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E35E78E2D1301C30003B857 /* CustomSegmentItem.swift */; };
+		0E35E7912D1302500003B857 /* MosaicSegmentedDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E35E7902D1302500003B857 /* MosaicSegmentedDemo.swift */; };
 		14374FB22B989FD500131332 /* New_Apps_TestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14374FB12B989FD500131332 /* New_Apps_TestApp.swift */; };
 		14374FB62B989FD700131332 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14374FB52B989FD700131332 /* Assets.xcassets */; };
 		14374FBA2B989FD700131332 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14374FB92B989FD700131332 /* Preview Assets.xcassets */; };
@@ -96,6 +99,9 @@
 		0E35E7812D12DC610003B857 /* InfiniteScrollModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfiniteScrollModifier.swift; sourceTree = "<group>"; };
 		0E35E7842D12E1900003B857 /* MasonryLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasonryLayout.swift; sourceTree = "<group>"; };
 		0E35E7882D12F8EA0003B857 /* CachedAsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachedAsyncImage.swift; sourceTree = "<group>"; };
+		0E35E78C2D1301B20003B857 /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
+		0E35E78E2D1301C30003B857 /* CustomSegmentItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentItem.swift; sourceTree = "<group>"; };
+		0E35E7902D1302500003B857 /* MosaicSegmentedDemo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MosaicSegmentedDemo.swift; sourceTree = "<group>"; };
 		14374FAE2B989FD500131332 /* New Apps Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "New Apps Test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		14374FB12B989FD500131332 /* New_Apps_TestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = New_Apps_TestApp.swift; sourceTree = "<group>"; };
 		14374FB52B989FD700131332 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -257,9 +263,9 @@
 		0E35E7682D12388A0003B857 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				0E35E78B2D1301A50003B857 /* CustomSegmentedControl */,
 				0E35E7882D12F8EA0003B857 /* CachedAsyncImage.swift */,
-				0E35E76B2D123B110003B857 /* HapticManaging.swift */,
-				0E35E7692D12388E0003B857 /* HapticManager.swift */,
+				0E35E78A2D13019F0003B857 /* HapticManager */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -295,6 +301,25 @@
 				0E35E7842D12E1900003B857 /* MasonryLayout.swift */,
 			);
 			path = Layout;
+			sourceTree = "<group>";
+		};
+		0E35E78A2D13019F0003B857 /* HapticManager */ = {
+			isa = PBXGroup;
+			children = (
+				0E35E76B2D123B110003B857 /* HapticManaging.swift */,
+				0E35E7692D12388E0003B857 /* HapticManager.swift */,
+			);
+			path = HapticManager;
+			sourceTree = "<group>";
+		};
+		0E35E78B2D1301A50003B857 /* CustomSegmentedControl */ = {
+			isa = PBXGroup;
+			children = (
+				0E35E7902D1302500003B857 /* MosaicSegmentedDemo.swift */,
+				0E35E78E2D1301C30003B857 /* CustomSegmentItem.swift */,
+				0E35E78C2D1301B20003B857 /* CustomSegmentedControl.swift */,
+			);
+			path = CustomSegmentedControl;
 			sourceTree = "<group>";
 		};
 		14374FA52B989FD500131332 = {
@@ -508,6 +533,7 @@
 				0E35E7612D11D75C0003B857 /* Mocks.swift in Sources */,
 				0E35E7672D121B440003B857 /* PolaroidCircleView.swift in Sources */,
 				14BEC9972C2DC3B5009D8493 /* User.swift in Sources */,
+				0E35E7912D1302500003B857 /* MosaicSegmentedDemo.swift in Sources */,
 				0E35E75A2D11D45C0003B857 /* ParticipationsGridView.swift in Sources */,
 				0E35E75B2D11D45C0003B857 /* ChallengeInfoView.swift in Sources */,
 				0E35E75C2D11D45C0003B857 /* ErrorView.swift in Sources */,
@@ -516,11 +542,13 @@
 				0E35E76F2D123BC60003B857 /* PolaroidFrame.swift in Sources */,
 				0E35E7632D11E5430003B857 /* ParticipationState.swift in Sources */,
 				14BEC9952C2DC39B009D8493 /* ThreadChatView.swift in Sources */,
+				0E35E78D2D1301B20003B857 /* CustomSegmentedControl.swift in Sources */,
 				048E7C6C2C2F3C6000B653F4 /* FriendsView.swift in Sources */,
 				0E35E7762D12C44D0003B857 /* FormatChallengeTimeUseCase.swift in Sources */,
 				048E7C682C2F08EA00B653F4 /* SettingsView.swift in Sources */,
 				0E35E77B2D12D23C0003B857 /* UnsplashImage.swift in Sources */,
 				0E35E76C2D123B110003B857 /* HapticManaging.swift in Sources */,
+				0E35E78F2D1301C30003B857 /* CustomSegmentItem.swift in Sources */,
 				14374FB22B989FD500131332 /* New_Apps_TestApp.swift in Sources */,
 				048E7C6E2C2F3CE900B653F4 /* ChallengeSubmissionView.swift in Sources */,
 				14BEC9992C2DC3D6009D8493 /* Thread.swift in Sources */,

@@ -29,6 +29,12 @@ class HapticManager: HapticManaging {
         }
     }
     
+    func playImpact(intensity: CGFloat = 0.4) {
+        let generator = UIImpactFeedbackGenerator(style: .light)
+        generator.prepare()
+        generator.impactOccurred(intensity: intensity)
+    }
+    
     func playLandingSequence() {
         let generator = UINotificationFeedbackGenerator()
         generator.prepare()

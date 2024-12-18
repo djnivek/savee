@@ -9,5 +9,6 @@ import Foundation
 
 protocol HapticManaging {
     func playSequence(count: Int, interval: TimeInterval)
+    func playImpact(intensity: CGFloat)
     func playLandingSequence()
 }

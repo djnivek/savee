@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -29,6 +29,8 @@
 		0E35E76C2D123B110003B857 /* HapticManaging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E35E76B2D123B110003B857 /* HapticManaging.swift */; };
 		0E35E76F2D123BC60003B857 /* PolaroidFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E35E76E2D123BC60003B857 /* PolaroidFrame.swift */; };
 		0E35E7762D12C44D0003B857 /* FormatChallengeTimeUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E35E7752D12C44D0003B857 /* FormatChallengeTimeUseCase.swift */; };
+		0E35E7792D12D1460003B857 /* NetworkClient in Frameworks */ = {isa = PBXBuildFile; productRef = 0E35E7782D12D1460003B857 /* NetworkClient */; };
+		0E35E77B2D12D23C0003B857 /* UnsplashImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E35E77A2D12D23C0003B857 /* UnsplashImage.swift */; };
 		14374FB22B989FD500131332 /* New_Apps_TestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14374FB12B989FD500131332 /* New_Apps_TestApp.swift */; };
 		14374FB62B989FD700131332 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14374FB52B989FD700131332 /* Assets.xcassets */; };
 		14374FBA2B989FD700131332 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14374FB92B989FD700131332 /* Preview Assets.xcassets */; };
@@ -83,6 +85,7 @@
 		0E35E76B2D123B110003B857 /* HapticManaging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManaging.swift; sourceTree = "<group>"; };
 		0E35E76E2D123BC60003B857 /* PolaroidFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolaroidFrame.swift; sourceTree = "<group>"; };
 		0E35E7752D12C44D0003B857 /* FormatChallengeTimeUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatChallengeTimeUseCase.swift; sourceTree = "<group>"; };
+		0E35E77A2D12D23C0003B857 /* UnsplashImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashImage.swift; sourceTree = "<group>"; };
 		14374FAE2B989FD500131332 /* New Apps Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "New Apps Test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		14374FB12B989FD500131332 /* New_Apps_TestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = New_Apps_TestApp.swift; sourceTree = "<group>"; };
 		14374FB52B989FD700131332 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -107,6 +110,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E35E7792D12D1460003B857 /* NetworkClient in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -130,6 +134,7 @@
 		048E7C6F2C32AC9E00B653F4 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				0E35E77A2D12D23C0003B857 /* UnsplashImage.swift */,
 				14BEC9962C2DC3B5009D8493 /* User.swift */,
 				14BEC9982C2DC3D6009D8493 /* Thread.swift */,
 				14BEC99A2C2DC3E1009D8493 /* SharedPhoto.swift */,
@@ -412,6 +417,9 @@
 				Base,
 			);
 			mainGroup = 14374FA52B989FD500131332;
+			packageReferences = (
+				0E35E7772D12D1450003B857 /* XCLocalSwiftPackageReference "NetworkClient" */,
+			);
 			productRefGroup = 14374FAF2B989FD500131332 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -475,6 +483,7 @@
 				048E7C6C2C2F3C6000B653F4 /* FriendsView.swift in Sources */,
 				0E35E7762D12C44D0003B857 /* FormatChallengeTimeUseCase.swift in Sources */,
 				048E7C682C2F08EA00B653F4 /* SettingsView.swift in Sources */,
+				0E35E77B2D12D23C0003B857 /* UnsplashImage.swift in Sources */,
 				0E35E76C2D123B110003B857 /* HapticManaging.swift in Sources */,
 				14374FB22B989FD500131332 /* New_Apps_TestApp.swift in Sources */,
 				048E7C6E2C2F3CE900B653F4 /* ChallengeSubmissionView.swift in Sources */,
@@ -839,6 +848,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		0E35E7772D12D1450003B857 /* XCLocalSwiftPackageReference "NetworkClient" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = NetworkClient;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0E35E7782D12D1460003B857 /* NetworkClient */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = NetworkClient;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 14374FA62B989FD500131332 /* Project object */;
 }

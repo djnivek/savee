@@ -14,29 +14,34 @@
  */
 
 import Foundation
+import NetworkClient
 
-class UnsplashService {
+actor UnsplashService {
+    private let networkClient: NetworkClient
     
-    let appId = "575727"
-    let accessKey = "8j7cdQS9HM1tfIomk_dUwqrIZ7wnymEECz6xk6OPP6k"
-    let baseURL = "https://api.unsplash.com/"
-    
-    func getFeaturedPhotos() async -> [String] {
-        let url = photosUrl()
-        let result = try! await URLSession.shared.data(from: url)
-        let imageInfos = try! JSONDecoder().decode([ImageInfo].self, from: result.0)
-        return imageInfos.map { $0.urls.regular }
+    init() {
+        let baseURL = URL(string: "https://api.unsplash.com")!
+        // For applications in demo mode, the Unsplash API currently places a limit of 50 requests per hour
+        let rateLimiter = RateLimiter(limit: 50, timeWindow: 3600)
+        
+        self.networkClient = NetworkClient(
+            baseURL: baseURL,
+            rateLimiter: rateLimiter
+        )
     }
     
-    func photosUrl() -> URL {
-        URL(string: baseURL + "/photos/?client_id=" + accessKey)!
+    func getPhotos(page: Int = 1, perPage: Int = 30) async throws -> [UnsplashImage] {
+        let endpoint = Endpoint(
+            path: "/photos",
+            headers: [
+                "Authorization": "Client-ID 8j7cdQS9HM1tfIomk_dUwqrIZ7wnymEECz6xk6OPP6k"
+            ],
+            queryItems: [
+                URLQueryItem(name: "page", value: "\(page)"),
+                URLQueryItem(name: "per_page", value: "\(perPage)")
+            ]
+        )
+        
+        return try await networkClient.request(endpoint)
     }
-}
-
-class ImageInfo: Codable {
-    let urls: ImageUrl
-}
-
-class ImageUrl: Codable {
-    let regular: String
 }

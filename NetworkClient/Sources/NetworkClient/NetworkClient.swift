@@ -3,7 +3,7 @@
 
 import Foundation
 
-public protocol NetworkClientProtocol {
+public protocol NetworkClientProtocol: Sendable {
     func request<T: Decodable>(_ endpoint: Endpoint) async throws -> T
     func request(_ endpoint: Endpoint) async throws -> Void
 }
@@ -11,13 +11,20 @@ public protocol NetworkClientProtocol {
 public struct NetworkClient: NetworkClientProtocol {
     private let session: URLSession
     private let baseURL: URL
+    private let rateLimiter: RateLimiter?
     
-    public init(baseURL: URL, session: URLSession = .shared) {
+    public init(
+        baseURL: URL,
+        session: URLSession = .shared,
+        rateLimiter: RateLimiter? = nil
+    ) {
         self.baseURL = baseURL
         self.session = session
+        self.rateLimiter = rateLimiter
     }
     
     public func request<T: Decodable>(_ endpoint: Endpoint) async throws -> T {
+        try await rateLimiter?.checkAndIncrement()
         let request = try createRequest(from: endpoint)
         let (data, response) = try await session.data(for: request)
         
@@ -46,9 +53,14 @@ public struct NetworkClient: NetworkClientProtocol {
     }
     
     private func createRequest(from endpoint: Endpoint) throws -> URLRequest {
-        let url = baseURL.appendingPathComponent(endpoint.path)
-        var request = URLRequest(url: url)
+        var components = URLComponents(url: baseURL.appendingPathComponent(endpoint.path), resolvingAgainstBaseURL: true)
+        components?.queryItems = endpoint.queryItems.isEmpty ? nil : endpoint.queryItems
         
+        guard let url = components?.url else {
+            throw NetworkError.invalidURL
+        }
+        
+        var request = URLRequest(url: url)
         request.httpMethod = endpoint.method.rawValue
         request.allHTTPHeaderFields = endpoint.headers
         

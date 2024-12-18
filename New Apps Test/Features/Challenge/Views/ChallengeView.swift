@@ -44,7 +44,7 @@ struct ChallengeView: View {
     @ViewBuilder
     private func challengeContent(_ challenge: Challenge) -> some View {
         VStack(spacing: 32) {
-            TimeRemainingView(timeRemaining: viewModel.formattedTimeRemaining())
+            TimeRemainingView(timeRemaining: viewModel.formattedTimeRemaining)
             
             ChallengeInfoView(
                 title: challenge.title,

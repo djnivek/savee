@@ -9,20 +9,25 @@ import Foundation
 
 extension Challenge {
     static var mocked: Challenge {
-        let calendar = Calendar.current
-        let today = calendar.startOfDay(for: Date())
+        let now = Date().timeIntervalSince1970
         
-        guard let startDate = calendar.date(bySettingHour: 10, minute: 0, second: 0, of: today),
-              let endDate = calendar.date(byAdding: .day, value: 1, to: startDate) else {
-            fatalError("Failed to create preview challenge - TODO: Handle error 😃")
+        let secondsInDay: TimeInterval = 24 * 60 * 60
+        let secondsSinceMidnight = TimeInterval(Int(now) % Int(secondsInDay))
+        let tenAMInSeconds: TimeInterval = 10 * 60 * 60
+        
+        let startTimestamp: TimeInterval
+        if secondsSinceMidnight >= tenAMInSeconds {
+            startTimestamp = now - secondsSinceMidnight + secondsInDay + tenAMInSeconds
+        } else {
+            startTimestamp = now - secondsSinceMidnight + tenAMInSeconds
         }
         
         return Challenge(
             id: UUID(),
             title: "Un poirier et un lavabo",
             description: "Réaliser un poirier devant un lavabo",
-            startTimestamp: startDate.timeIntervalSince1970,
-            endTimestamp: endDate.timeIntervalSince1970
+            startTimestamp: startTimestamp,
+            endTimestamp: startTimestamp
         )
     }
 }

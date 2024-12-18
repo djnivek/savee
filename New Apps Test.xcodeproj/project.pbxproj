@@ -28,6 +28,7 @@
 		0E35E76A2D12388E0003B857 /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E35E7692D12388E0003B857 /* HapticManager.swift */; };
 		0E35E76C2D123B110003B857 /* HapticManaging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E35E76B2D123B110003B857 /* HapticManaging.swift */; };
 		0E35E76F2D123BC60003B857 /* PolaroidFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E35E76E2D123BC60003B857 /* PolaroidFrame.swift */; };
+		0E35E7762D12C44D0003B857 /* FormatChallengeTimeUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E35E7752D12C44D0003B857 /* FormatChallengeTimeUseCase.swift */; };
 		14374FB22B989FD500131332 /* New_Apps_TestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14374FB12B989FD500131332 /* New_Apps_TestApp.swift */; };
 		14374FB62B989FD700131332 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14374FB52B989FD700131332 /* Assets.xcassets */; };
 		14374FBA2B989FD700131332 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14374FB92B989FD700131332 /* Preview Assets.xcassets */; };
@@ -81,6 +82,7 @@
 		0E35E7692D12388E0003B857 /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
 		0E35E76B2D123B110003B857 /* HapticManaging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManaging.swift; sourceTree = "<group>"; };
 		0E35E76E2D123BC60003B857 /* PolaroidFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolaroidFrame.swift; sourceTree = "<group>"; };
+		0E35E7752D12C44D0003B857 /* FormatChallengeTimeUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatChallengeTimeUseCase.swift; sourceTree = "<group>"; };
 		14374FAE2B989FD500131332 /* New Apps Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "New Apps Test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		14374FB12B989FD500131332 /* New_Apps_TestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = New_Apps_TestApp.swift; sourceTree = "<group>"; };
 		14374FB52B989FD700131332 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 		0E2E59232D11C7FC006A3F95 /* Challenge */ = {
 			isa = PBXGroup;
 			children = (
+				0E35E7722D12C2E10003B857 /* UseCase */,
 				0E35E74F2D11CFEC0003B857 /* ViewModels */,
 				0E35E74E2D11CFE30003B857 /* Views */,
 				0E2E59272D11C827006A3F95 /* Service */,
@@ -248,6 +251,14 @@
 				0E35E7662D121B440003B857 /* PolaroidCircleView.swift */,
 			);
 			path = PolaroidCircle;
+			sourceTree = "<group>";
+		};
+		0E35E7722D12C2E10003B857 /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				0E35E7752D12C44D0003B857 /* FormatChallengeTimeUseCase.swift */,
+			);
+			path = UseCase;
 			sourceTree = "<group>";
 		};
 		14374FA52B989FD500131332 = {
@@ -462,6 +473,7 @@
 				0E35E7632D11E5430003B857 /* ParticipationState.swift in Sources */,
 				14BEC9952C2DC39B009D8493 /* ThreadChatView.swift in Sources */,
 				048E7C6C2C2F3C6000B653F4 /* FriendsView.swift in Sources */,
+				0E35E7762D12C44D0003B857 /* FormatChallengeTimeUseCase.swift in Sources */,
 				048E7C682C2F08EA00B653F4 /* SettingsView.swift in Sources */,
 				0E35E76C2D123B110003B857 /* HapticManaging.swift in Sources */,
 				14374FB22B989FD500131332 /* New_Apps_TestApp.swift in Sources */,

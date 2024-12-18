@@ -21,15 +21,20 @@ class ChallengeViewModel {
     }
     
     private let challengeService: ChallengeService
+    private let formatTime: FormatChallengeTimeUseCase
     private var timer: Timer?
     var participations: [ParticipationState] = Array(repeating: .blurred, count: 9)
     private var userParticipationIndex: Int?
     
     var state: State = .loading
-    var timeRemaining: TimeInterval = 0
+    var formattedTimeRemaining: String = "--:--:--"
     
-    init(challengeService: ChallengeService) {
+    init(
+        challengeService: ChallengeService,
+        formatTime: FormatChallengeTimeUseCase = DefaultFormatChallengeTimeUseCase()
+    ) {
         self.challengeService = challengeService
+        self.formatTime = formatTime
     }
     
     @MainActor
@@ -38,7 +43,7 @@ class ChallengeViewModel {
         do {
             let challenge = try await challengeService.getCurrentChallenge()
             state = .loaded(challenge)
-            startTimer(endTimestamp: challenge.endTimestamp)
+            updateTimer(for: challenge)
         } catch {
             state = .error(error)
         }
@@ -65,23 +70,18 @@ class ChallengeViewModel {
         }
     }
     
-    private func startTimer(endTimestamp: TimeInterval) {
+    private func updateTimer(for challenge: Challenge) {
         timer?.invalidate()
+        updateTime(for: challenge)
+        
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
-            self?.updateTimeRemaining(endTimestamp: endTimestamp)
+            guard let self else { return }
+            self.updateTime(for: challenge)
         }
     }
     
-    private func updateTimeRemaining(endTimestamp: TimeInterval) {
-        let now = Date().timeIntervalSince1970
-        timeRemaining = max(0, endTimestamp - now)
-    }
-    
-    func formattedTimeRemaining() -> String {
-        let hours = Int(timeRemaining) / 3600
-        let minutes = Int(timeRemaining) / 60 % 60
-        let seconds = Int(timeRemaining) % 60
-        return String(format: "%02d:%02d:%02d", hours, minutes, seconds)
+    private func updateTime(for challenge: Challenge) {
+        formattedTimeRemaining = formatTime.execute(challenge)
     }
     
     deinit {

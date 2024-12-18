@@ -13,9 +13,4 @@ struct Challenge: Identifiable, Equatable {
     let description: String
     let startTimestamp: TimeInterval
     let endTimestamp: TimeInterval
-    
-    var isActive: Bool {
-        let now = Date().timeIntervalSince1970
-        return now >= startTimestamp && now <= endTimestamp
-    }
 }

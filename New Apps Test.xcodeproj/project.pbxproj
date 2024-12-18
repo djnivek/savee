@@ -31,10 +31,6 @@
 		0E35E7892D12F8EA0003B857 /* CachedAsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E35E7882D12F8EA0003B857 /* CachedAsyncImage.swift */; };
 		0E35E78D2D1301B20003B857 /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E35E78C2D1301B20003B857 /* CustomSegmentedControl.swift */; };
 		0E35E78F2D1301C30003B857 /* CustomSegmentItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E35E78E2D1301C30003B857 /* CustomSegmentItem.swift */; };
-		0E35E7912D1302500003B857 /* MosaicSegmentedDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E35E7902D1302500003B857 /* MosaicSegmentedDemo.swift */; };
-		0E4F464D2D1336D400BB74F6 /* HomeTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4F464C2D1336D400BB74F6 /* HomeTab.swift */; };
-		0E4F46502D13370E00BB74F6 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4F464F2D13370E00BB74F6 /* HomeViewModel.swift */; };
-		0E4F46532D13373300BB74F6 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4F46522D13373300BB74F6 /* HomeView.swift */; };
 		0E4F46652D133C5E00BB74F6 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4F465E2D133C5E00BB74F6 /* ErrorView.swift */; };
 		0E4F46662D133C5E00BB74F6 /* ChallengeInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4F465D2D133C5E00BB74F6 /* ChallengeInfoView.swift */; };
 		0E4F46672D133C5E00BB74F6 /* ParticipationsGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4F46602D133C5E00BB74F6 /* ParticipationsGridView.swift */; };
@@ -100,10 +96,6 @@
 		0E35E7882D12F8EA0003B857 /* CachedAsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachedAsyncImage.swift; sourceTree = "<group>"; };
 		0E35E78C2D1301B20003B857 /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
 		0E35E78E2D1301C30003B857 /* CustomSegmentItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentItem.swift; sourceTree = "<group>"; };
-		0E35E7902D1302500003B857 /* MosaicSegmentedDemo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MosaicSegmentedDemo.swift; sourceTree = "<group>"; };
-		0E4F464C2D1336D400BB74F6 /* HomeTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTab.swift; sourceTree = "<group>"; };
-		0E4F464F2D13370E00BB74F6 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
-		0E4F46522D13373300BB74F6 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		0E4F465D2D133C5E00BB74F6 /* ChallengeInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeInfoView.swift; sourceTree = "<group>"; };
 		0E4F465E2D133C5E00BB74F6 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		0E4F465F2D133C5E00BB74F6 /* ParticipateButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipateButton.swift; sourceTree = "<group>"; };
@@ -183,7 +175,6 @@
 			isa = PBXGroup;
 			children = (
 				0E35E76D2D123B660003B857 /* PolaroidCircle */,
-				048E7C652C2F08B500B653F4 /* RootView.swift */,
 				14BEC9942C2DC39B009D8493 /* ThreadChatView.swift */,
 				048E7C6B2C2F3C6000B653F4 /* FriendsView.swift */,
 				048E7C672C2F08EA00B653F4 /* SettingsView.swift */,
@@ -194,6 +185,7 @@
 		0E2E59232D11C7FC006A3F95 /* Challenge */ = {
 			isa = PBXGroup;
 			children = (
+				0E4F467B2D135BBC00BB74F6 /* Submission */,
 				0E4F46722D133DB200BB74F6 /* Common */,
 				0E4F46572D1339C500BB74F6 /* TodayChallenge */,
 				0E4F46542D13391400BB74F6 /* Explorer */,
@@ -211,19 +203,19 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		0E2E59272D11C827006A3F95 /* Service */ = {
+		0E2E59272D11C827006A3F95 /* Services */ = {
 			isa = PBXGroup;
 			children = (
 				0E2E592A2D11C958006A3F95 /* MockChallengeService.swift */,
 				0E2E59282D11C82D006A3F95 /* ChallengeService.swift */,
 			);
-			path = Service;
+			path = Services;
 			sourceTree = "<group>";
 		};
 		0E35E74D2D11CFDB0003B857 /* Features */ = {
 			isa = PBXGroup;
 			children = (
-				0E4F464A2D1336C800BB74F6 /* Home */,
+				0E4F464A2D1336C800BB74F6 /* Root */,
 				0E2E59232D11C7FC006A3F95 /* Challenge */,
 			);
 			path = Features;
@@ -243,6 +235,7 @@
 				0E35E78B2D1301A50003B857 /* CustomSegmentedControl */,
 				0E35E7882D12F8EA0003B857 /* CachedAsyncImage.swift */,
 				0E35E78A2D13019F0003B857 /* HapticManager */,
+				14374FB12B989FD500131332 /* New_Apps_TestApp.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -276,46 +269,19 @@
 		0E35E78B2D1301A50003B857 /* CustomSegmentedControl */ = {
 			isa = PBXGroup;
 			children = (
-				0E35E7902D1302500003B857 /* MosaicSegmentedDemo.swift */,
 				0E35E78E2D1301C30003B857 /* CustomSegmentItem.swift */,
 				0E35E78C2D1301B20003B857 /* CustomSegmentedControl.swift */,
 			);
 			path = CustomSegmentedControl;
 			sourceTree = "<group>";
 		};
-		0E4F464A2D1336C800BB74F6 /* Home */ = {
-			isa = PBXGroup;
-			children = (
-				0E4F46512D13372900BB74F6 /* Views */,
-				0E4F464E2D13370300BB74F6 /* ViewModels */,
-				0E4F464B2D1336D200BB74F6 /* Models */,
-			);
-			path = Home;
-			sourceTree = "<group>";
-		};
-		0E4F464B2D1336D200BB74F6 /* Models */ = {
+		0E4F464A2D1336C800BB74F6 /* Root */ = {
 			isa = PBXGroup;
 			children = (
 				0E4F46732D133FF500BB74F6 /* Tab.swift */,
-				0E4F464C2D1336D400BB74F6 /* HomeTab.swift */,
+				048E7C652C2F08B500B653F4 /* RootView.swift */,
 			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		0E4F464E2D13370300BB74F6 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-				0E4F464F2D13370E00BB74F6 /* HomeViewModel.swift */,
-			);
-			path = ViewModels;
-			sourceTree = "<group>";
-		};
-		0E4F46512D13372900BB74F6 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				0E4F46522D13373300BB74F6 /* HomeView.swift */,
-			);
-			path = Views;
+			path = Root;
 			sourceTree = "<group>";
 		};
 		0E4F46542D13391400BB74F6 /* Explorer */ = {
@@ -411,7 +377,6 @@
 				0E4F46632D133C5E00BB74F6 /* Components */,
 				0E4F466E2D133CCE00BB74F6 /* Modifiers */,
 				0E4F466C2D133CCE00BB74F6 /* Layout */,
-				048E7C6D2C2F3CE900B653F4 /* ChallengeSubmissionView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -421,7 +386,7 @@
 			children = (
 				0E4F466F2D133CCE00BB74F6 /* Views */,
 				0E35E7722D12C2E10003B857 /* UseCases */,
-				0E2E59272D11C827006A3F95 /* Service */,
+				0E2E59272D11C827006A3F95 /* Services */,
 				0E2E59242D11C803006A3F95 /* Models */,
 			);
 			path = Common;
@@ -442,6 +407,14 @@
 				0E4F46752D13407D00BB74F6 /* ExplorerView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		0E4F467B2D135BBC00BB74F6 /* Submission */ = {
+			isa = PBXGroup;
+			children = (
+				048E7C6D2C2F3CE900B653F4 /* ChallengeSubmissionView.swift */,
+			);
+			path = Submission;
 			sourceTree = "<group>";
 		};
 		14374FA52B989FD500131332 = {
@@ -471,7 +444,6 @@
 				0E35E7682D12388A0003B857 /* Core */,
 				0E35E75F2D11D7590003B857 /* Mocks */,
 				0E35E74D2D11CFDB0003B857 /* Features */,
-				14374FB12B989FD500131332 /* New_Apps_TestApp.swift */,
 				048E7C712C32ACB000B653F4 /* Views */,
 				048E7C702C32ACA700B653F4 /* Services */,
 				048E7C6F2C32AC9E00B653F4 /* Models */,
@@ -647,9 +619,7 @@
 				0E4F46692D133C5E00BB74F6 /* PreviousChallengeHeader.swift in Sources */,
 				0E4F466A2D133C5E00BB74F6 /* TimeRemainingView.swift in Sources */,
 				0E35E76A2D12388E0003B857 /* HapticManager.swift in Sources */,
-				0E4F46502D13370E00BB74F6 /* HomeViewModel.swift in Sources */,
 				14BEC99B2C2DC3E1009D8493 /* SharedPhoto.swift in Sources */,
-				0E4F46532D13373300BB74F6 /* HomeView.swift in Sources */,
 				0E35E77F2D12DB1A0003B857 /* DiscoverView.swift in Sources */,
 				0E2E59262D11C80B006A3F95 /* Challenge.swift in Sources */,
 				0E35E7892D12F8EA0003B857 /* CachedAsyncImage.swift in Sources */,
@@ -657,13 +627,11 @@
 				14E2F7362B9F6385007CCA2C /* ChatService.swift in Sources */,
 				0E35E7532D11D00B0003B857 /* TodayChallengeView.swift in Sources */,
 				0E35E77D2D12D7E60003B857 /* DiscoverViewModel.swift in Sources */,
-				0E4F464D2D1336D400BB74F6 /* HomeTab.swift in Sources */,
 				0E35E7652D11E54F0003B857 /* Participation.swift in Sources */,
 				0E35E7612D11D75C0003B857 /* Mocks.swift in Sources */,
 				0E35E7672D121B440003B857 /* PolaroidCircleView.swift in Sources */,
 				0E4F46762D13407D00BB74F6 /* ExplorerView.swift in Sources */,
 				14BEC9972C2DC3B5009D8493 /* User.swift in Sources */,
-				0E35E7912D1302500003B857 /* MosaicSegmentedDemo.swift in Sources */,
 				0E35E76F2D123BC60003B857 /* PolaroidFrame.swift in Sources */,
 				0E35E7632D11E5430003B857 /* ParticipationState.swift in Sources */,
 				14BEC9952C2DC39B009D8493 /* ThreadChatView.swift in Sources */,

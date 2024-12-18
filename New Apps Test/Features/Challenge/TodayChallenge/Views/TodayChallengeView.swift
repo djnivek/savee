@@ -34,7 +34,6 @@ struct TodayChallengeView: View {
                 }
                 .padding()
             }
-            .navigationTitle("Challenge du jour")
         }
         .task {
             await viewModel.loadChallenge()

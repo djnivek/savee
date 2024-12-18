@@ -23,6 +23,7 @@ class TodayChallengeViewModel {
     private let challengeService: ChallengeService
     private let formatTime: FormatChallengeTimeUseCase
     private let calculateProgress: CalculateChallengeProgressUseCase
+    private var currentChallenge: Challenge?
     private var timer: Timer?
     var participations: [ParticipationState] = Array(repeating: .blurred, count: 9)
     private var userParticipationIndex: Int?
@@ -41,13 +42,19 @@ class TodayChallengeViewModel {
         self.calculateProgress = calculateProgress
     }
     
+    deinit {
+        stopTimer()
+    }
+    
     @MainActor
     func loadChallenge() async {
+        stopTimer()
         state = .loading
         do {
-            let challenge = try await challengeService.currentChallenge()
-            state = .loaded(challenge)
-            updateTimer(for: challenge)
+            currentChallenge = try await challengeService.currentChallenge()
+            guard let currentChallenge else { return }
+            state = .loaded(currentChallenge)
+            startTimer()
         } catch {
             state = .error(error)
         }
@@ -68,29 +75,33 @@ class TodayChallengeViewModel {
                     userParticipationIndex = emptyIndex
                 }
             }
-            // TODO: handle success with a haptic feedback
         } catch {
             // TODO: handle error
         }
     }
     
-    private func updateTimer(for challenge: Challenge) {
-        timer?.invalidate()
-        updateTime(for: challenge)
-        
-        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
-            guard let self else { return }
-            self.updateTime(for: challenge)
-        }
-    }
-    
-    private func updateTime(for challenge: Challenge) {
+    private func updateTime() {
+        guard let challenge = currentChallenge else { return }
         formattedTimeRemaining = formatTime.execute(challenge)
         progress = calculateProgress.execute(challenge)
-        print(progress)
     }
     
-    deinit {
+    func startTimer() {
+        stopTimer()
+        
+        guard let challenge = currentChallenge else { return }
+        updateTime()
+        
+        timer = Timer(timeInterval: 1, repeats: true) { [weak self] _ in
+            Task { @MainActor [weak self] in
+                self?.updateTime()
+            }
+        }
+        RunLoop.main.add(timer!, forMode: .common)
+    }
+    
+    func stopTimer() {
         timer?.invalidate()
+        timer = nil
     }
 }

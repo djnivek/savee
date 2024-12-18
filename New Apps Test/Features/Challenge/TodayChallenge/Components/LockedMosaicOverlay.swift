@@ -15,6 +15,7 @@ struct LockedMosaicOverlay: View {
     
     @State private var shouldAnimate = false
     @State private var hapticIntensity: CGFloat = 0.5
+    @State private var animationTimer: Timer?
     
     private let minHapticIntensity: CGFloat = 0.1
     private let hapticDecrement: CGFloat = 0.1
@@ -43,6 +44,8 @@ struct LockedMosaicOverlay: View {
             }
         }
         .padding(32)
+        .onAppear(perform: setupTimer)
+        .onDisappear(perform: invalidateTimer)
     }
     
     private var mainContent: some View {
@@ -66,14 +69,6 @@ struct LockedMosaicOverlay: View {
                 .font(.system(size: 44))
                 .foregroundStyle(.secondary)
                 .symbolEffect(.bounce.up.byLayer, options: .nonRepeating, value: shouldAnimate)
-                .onAppear {
-                    Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { _ in
-                        shouldAnimate.toggle()
-                    }
-                    Timer.scheduledTimer(withTimeInterval: 8.0, repeats: true) { _ in
-                        shouldAnimate.toggle()
-                    }
-                }
             
             Text("Ta photo est au chaud ! Reviens demain pour la surprise")
                 .font(.headline)
@@ -88,24 +83,38 @@ struct LockedMosaicOverlay: View {
                 .font(.system(size: 44))
                 .foregroundStyle(.secondary)
                 .symbolEffect(.bounce.up.byLayer, options: .nonRepeating, value: shouldAnimate)
-                .onAppear {
-                    Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { _ in
-                        shouldAnimate.toggle()
-                        hapticManager.playImpact(intensity: hapticIntensity)
-                    }
-                    Timer.scheduledTimer(withTimeInterval: 12, repeats: true) { _ in
-                        shouldAnimate.toggle()
-                        
-                        hapticIntensity = max(hapticIntensity - hapticDecrement, minHapticIntensity)
-                        hapticManager.playImpact(intensity: hapticIntensity)
-                    }
-                }
             
             Text("Hé ! Montre-nous ta créativité pour voir ce que les autres préparent 😎")
                 .font(.headline)
                 .multilineTextAlignment(.center)
                 .foregroundStyle(.secondary)
         }
+    }
+    
+    private func setupTimer() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            shouldAnimate.toggle()
+            if !hasParticipated {
+                hapticManager.playImpact(intensity: hapticIntensity)
+            }
+        }
+        
+        animationTimer = Timer.scheduledTimer(withTimeInterval: 12, repeats: true) { _ in
+            shouldAnimate.toggle()
+            if !hasParticipated {
+                hapticIntensity = max(hapticIntensity - hapticDecrement, minHapticIntensity)
+                hapticManager.playImpact(intensity: hapticIntensity)
+            }
+        }
+        
+        if let animationTimer {
+            RunLoop.main.add(animationTimer, forMode: .common)
+        }
+    }
+    
+    private func invalidateTimer() {
+        animationTimer?.invalidate()
+        animationTimer = nil
     }
 }
 

@@ -42,6 +42,9 @@ struct TodayChallengeView: View {
         .task {
             await viewModel.loadChallenge()
         }
+        .onDisappear {
+            viewModel.stopTimer()
+        }
     }
     
     @ViewBuilder

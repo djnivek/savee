@@ -2,6 +2,10 @@ import SwiftUI
 
 struct ParticipationsGridView: View {
     let participations: [ParticipationState]
+    let hasParticipated: Bool
+    let hapticManager: HapticManaging
+    var onParticipate: (() -> Void)?
+    var onPremiumAccess: (() -> Void)?
     
     private let columns = [
         GridItem(.flexible(), spacing: 4),
@@ -19,20 +23,29 @@ struct ParticipationsGridView: View {
                     .font(.title3)
             }
             
-            LazyVGrid(columns: columns, spacing: 4) {
-                ForEach(Array(participations.enumerated()), id: \.offset) { index, participation in
-                    switch participation {
-                    case .blurred:
-                        BlurredImageCell()
-                    case .visible(let imageData):
-                        if let uiImage = UIImage(data: imageData) {
-                            Image(uiImage: uiImage)
-                                .resizable()
-                                .aspectRatio(1, contentMode: .fill)
-                                .clipShape(RoundedRectangle(cornerRadius: 8))
+            ZStack {
+                LazyVGrid(columns: columns, spacing: 4) {
+                    ForEach(Array(participations.enumerated()), id: \.offset) { index, participation in
+                        switch participation {
+                        case .blurred:
+                            BlurredImageCell()
+                        case .visible(let imageData):
+                            if let uiImage = UIImage(data: imageData) {
+                                Image(uiImage: uiImage)
+                                    .resizable()
+                                    .aspectRatio(1, contentMode: .fill)
+                                    .clipShape(RoundedRectangle(cornerRadius: 8))
+                            }
                         }
                     }
                 }
+                
+                LockedMosaicOverlay(
+                    hasParticipated: hasParticipated,
+                    hapticManager: hapticManager,
+                    onParticipate: onParticipate,
+                    onPremiumAccess: onPremiumAccess
+                )
             }
         }
         .padding()

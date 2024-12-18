@@ -18,12 +18,14 @@ import SwiftUI
 struct RootView: View {
     @State private var selectedTab: Tab = .challenge
     private let challengeService = MockChallengeService()
+    private let hapticManager = HapticManager.shared
     
     var body: some View {
         TabView(selection: $selectedTab) {
             NavigationStack {
                 TodayChallengeView(
-                    viewModel: .init(challengeService: challengeService)
+                    viewModel: .init(challengeService: challengeService),
+                    hapticManager: hapticManager
                 )
                 .navigationTitle("Hoost")
                 .navigationBarTitleDisplayMode(.inline)

@@ -22,6 +22,7 @@ actor UnsplashService {
     init() {
         let baseURL = URL(string: "https://api.unsplash.com")!
         // For applications in demo mode, the Unsplash API currently places a limit of 50 requests per hour
+        // TODO: Get the limit from the responses headers
         let rateLimiter = RateLimiter(limit: 50, timeWindow: 3600)
         
         self.networkClient = NetworkClient(

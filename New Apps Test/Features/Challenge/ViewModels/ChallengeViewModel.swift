@@ -41,7 +41,7 @@ class ChallengeViewModel {
     func loadChallenge() async {
         state = .loading
         do {
-            let challenge = try await challengeService.getCurrentChallenge()
+            let challenge = try await challengeService.currentChallenge()
             state = .loaded(challenge)
             updateTimer(for: challenge)
         } catch {

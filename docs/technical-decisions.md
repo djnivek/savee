@@ -115,3 +115,55 @@ Here is the template for the technical decisions documentation:
   - **Lose**: 
     - Limited compatibility with older platforms.
     - Requires understanding and adopting the actor model and `async/await`.
+
+### 5. Infinite Scroll Using ScrollView Preference
+
+- **Decision**: Implement a custom ViewModifier based on ScrollView preferences to detect scroll position and trigger pagination
+- **Alternatives Considered**: 
+  - Sentinel view at the end of the list
+  - LazyVStack with onAppear on last item
+  - Third-party infinite scroll libraries
+- **Rationale**: 
+  - Avoids having to manage "sentinel items" in the data model
+  - Eliminates the need for polymorphism in the items collection
+  - Modifiers: More composable and reusable solution across the app
+  - Clear separation of concerns (modifier only knows about scrolling)
+  - More SwiftUI-native approach
+- **Consequences**: 
+  - Uses SwiftUI preference system which can be complex to debug
+  - Needs careful threshold tuning for optimal UX
+- **Trade-offs**: 
+  - Gain: 
+    - More modular code
+    - No data model pollution
+    - Increased reusability
+  - Loss:
+    - Performance slightly impacted by constant position tracking
+
+### 6. CachedAsyncImage with NSCache
+
+- **Decision**: Create a wrapper around SwiftUI's AsyncImage with NSCache for caching management
+- **Alternatives Considered**:
+  - Full custom image loading implementation
+  - Third-party libraries (Kingfisher, SDWebImage)
+  - Custom cache using FileManager or Core Data
+  - URL cache configuration
+- **Rationale**: 
+  - Leverages native SwiftUI AsyncImage component
+  - Benefits from future Apple improvements automatically
+  - NSCache provides automatic memory management under pressure
+  - Maintains codebase aligned with Apple standards
+- **Consequences**: 
+  - Dependency on AsyncImage behavior
+  - In-memory cache only (no persistence)
+  - Need to handle cache invalidation manually
+- **Trade-offs**: 
+  - Gain:
+    - Simplified maintenance
+    - Automatic updates through SwiftUI
+    - Optimized memory management
+    - Native SwiftUI integration
+  - Loss:
+    - Less control over exact loading behavior
+    - No persistent cache
+    - Limited cache configuration options

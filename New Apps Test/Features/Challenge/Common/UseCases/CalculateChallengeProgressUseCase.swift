@@ -23,7 +23,6 @@ struct DefaultCalculateChallengeProgressUseCase: CalculateChallengeProgressUseCa
         
         let progress = elapsed / totalDuration
         let clampedProgress = max(0, min(1, progress))
-        print("Progress: \(clampedProgress), elapsed: \(elapsed), total: \(totalDuration)")
         
         // Truncate to 2 decimal places to avoid too frequent UI updates
         // Example: 0.87654321 becomes 0.87

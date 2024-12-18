@@ -15,15 +15,14 @@ struct ChallengeInfoCard: View {
     
     @State private var borderProgress: Double = 0
     @State private var showBorder: Bool = false
+    @State private var borderTimer: Timer?
     
     private let drawDuration: Double = 3
     private let displayDuration: Double = 10
     private let retractDuration: Double = 1.5
-    private let cycleInterval: Double = 30
     
     var body: some View {
         VStack(spacing: 24) {
-            // Timer section
             HStack(spacing: 8) {
                 Text(timeRemaining)
                     .font(.title2.bold())
@@ -33,7 +32,6 @@ struct ChallengeInfoCard: View {
                     .foregroundStyle(.secondary)
             }
             
-            // Challenge info section
             VStack(alignment: .leading, spacing: 8) {
                 Text(title)
                     .font(.title.bold())
@@ -56,15 +54,25 @@ struct ChallengeInfoCard: View {
                 shouldShow: showBorder
             )
         }
-        .onAppear(perform: startAnimationCycle)
+        .onAppear(perform: setupTimer)
+        .onDisappear(perform: invalidateTimer)
     }
     
-    private func startAnimationCycle() {
+    private func setupTimer() {
         animateBorder()
         
-        Timer.scheduledTimer(withTimeInterval: cycleInterval, repeats: true) { _ in
+        borderTimer = Timer.scheduledTimer(withTimeInterval: 30, repeats: true) { _ in
             animateBorder()
         }
+        
+        if let borderTimer {
+            RunLoop.main.add(borderTimer, forMode: .common)
+        }
+    }
+    
+    private func invalidateTimer() {
+        borderTimer?.invalidate()
+        borderTimer = nil
     }
     
     private func animateBorder() {

@@ -167,3 +167,34 @@ Here is the template for the technical decisions documentation:
     - Less control over exact loading behavior
     - No persistent cache
     - Limited cache configuration options
+
+### 7. Timer RunLoop Mode Configuration
+
+- **Decision**: Configure timers with RunLoop.main.common mode instead of relying on the default mode from Timer.scheduledTimer
+
+- **Alternatives Considered**:
+  - Keep timers in default mode (Timer.scheduledTimer behavior)
+  - Create custom scheduling mechanism
+  - Use Combine publishers with different scheduling options
+
+- **Rationale**: 
+  - Default RunLoop mode (.default) pauses timers during UI tracking events:
+    - ScrollView interactions
+    - Touch events
+    - Gestures
+  - Common mode ensures continuous timer execution during these events
+
+- **Consequences**: 
+  - Need to explicitly add timers to RunLoop with .common mode
+  - Timers will consume more resources as they continue during all UI events
+  - More consistent user experience as animations don't pause during scrolling
+
+- **Trade-offs**: 
+  - Gain:
+    - Smooth, uninterrupted animations during scrolling
+    - Consistent timer behavior across all UI states
+    - Better user experience for time-sensitive features
+  - Loss:
+    - Slightly higher battery usage
+    - More complex timer setup code
+    - Potential for increased CPU usage during heavy UI interaction

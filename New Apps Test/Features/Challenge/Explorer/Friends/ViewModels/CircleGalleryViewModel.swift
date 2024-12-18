@@ -1,13 +1,14 @@
 //
-//  MosaicViewModel.swift
+//  CircleGalleryViewModel.swift
 //  New Apps Test
 //
 //  Created by Kevin MACHADO on 18/12/2024.
 //
+
 import Foundation
 
 @Observable
-final class DiscoverGalleryViewModel: GalleryViewModel {
+final class CircleGalleryViewModel: GalleryViewModel {
     private let unsplashService: UnsplashService
     private var currentPage = 1
     private let imagesPerPage = 30
@@ -41,7 +42,7 @@ final class DiscoverGalleryViewModel: GalleryViewModel {
     private func loadImages() async {
         isLoading = true
         do {
-            let newImages = try await unsplashService.getDiscoverPhotos(
+            let newImages = try await unsplashService.getCirclePhotos(
                 page: currentPage,
                 perPage: imagesPerPage
             )

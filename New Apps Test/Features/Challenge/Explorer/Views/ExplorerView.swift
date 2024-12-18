@@ -27,7 +27,7 @@ struct ExplorerView: View {
                 DiscoverView(viewModel: .init(unsplashService: unsplashService))
                     .tag(ExplorerSection.discover)
                 
-                DiscoverView(viewModel: .init(unsplashService: unsplashService))
+                CircleView(viewModel: .init(unsplashService: unsplashService))
                     .tag(ExplorerSection.circle)
             }
             .tabViewStyle(.page(indexDisplayMode: .never))

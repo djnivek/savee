@@ -41,6 +41,10 @@
 		0E4F46712D133CCE00BB74F6 /* MasonryLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4F466B2D133CCE00BB74F6 /* MasonryLayout.swift */; };
 		0E4F46742D133FF500BB74F6 /* Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4F46732D133FF500BB74F6 /* Tab.swift */; };
 		0E4F46762D13407D00BB74F6 /* ExplorerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4F46752D13407D00BB74F6 /* ExplorerView.swift */; };
+		0E4F467E2D1366E100BB74F6 /* GalleryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4F467D2D1366E100BB74F6 /* GalleryViewModel.swift */; };
+		0E4F46802D13673000BB74F6 /* CircleGalleryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4F467F2D13673000BB74F6 /* CircleGalleryViewModel.swift */; };
+		0E4F46842D1367EA00BB74F6 /* GalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4F46832D1367EA00BB74F6 /* GalleryView.swift */; };
+		0E4F46862D1368DD00BB74F6 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4F46852D1368DD00BB74F6 /* CircleView.swift */; };
 		14374FB22B989FD500131332 /* New_Apps_TestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14374FB12B989FD500131332 /* New_Apps_TestApp.swift */; };
 		14374FB62B989FD700131332 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14374FB52B989FD700131332 /* Assets.xcassets */; };
 		14374FBA2B989FD700131332 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14374FB92B989FD700131332 /* Preview Assets.xcassets */; };
@@ -106,6 +110,10 @@
 		0E4F466D2D133CCE00BB74F6 /* InfiniteScrollModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfiniteScrollModifier.swift; sourceTree = "<group>"; };
 		0E4F46732D133FF500BB74F6 /* Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab.swift; sourceTree = "<group>"; };
 		0E4F46752D13407D00BB74F6 /* ExplorerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExplorerView.swift; sourceTree = "<group>"; };
+		0E4F467D2D1366E100BB74F6 /* GalleryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryViewModel.swift; sourceTree = "<group>"; };
+		0E4F467F2D13673000BB74F6 /* CircleGalleryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleGalleryViewModel.swift; sourceTree = "<group>"; };
+		0E4F46832D1367EA00BB74F6 /* GalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryView.swift; sourceTree = "<group>"; };
+		0E4F46852D1368DD00BB74F6 /* CircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
 		14374FAE2B989FD500131332 /* New Apps Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "New Apps Test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		14374FB12B989FD500131332 /* New_Apps_TestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = New_Apps_TestApp.swift; sourceTree = "<group>"; };
 		14374FB52B989FD700131332 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -287,6 +295,7 @@
 		0E4F46542D13391400BB74F6 /* Explorer */ = {
 			isa = PBXGroup;
 			children = (
+				0E4F467C2D1366DD00BB74F6 /* Common */,
 				0E4F46782D13420D00BB74F6 /* Views */,
 				0E4F46772D1340A800BB74F6 /* Discover */,
 				0E4F465A2D133B3400BB74F6 /* Friends */,
@@ -338,6 +347,8 @@
 		0E4F465A2D133B3400BB74F6 /* Friends */ = {
 			isa = PBXGroup;
 			children = (
+				0E4F46882D1369C300BB74F6 /* ViewModels */,
+				0E4F46872D1369BF00BB74F6 /* Views */,
 			);
 			path = Friends;
 			sourceTree = "<group>";
@@ -415,6 +426,31 @@
 				048E7C6D2C2F3CE900B653F4 /* ChallengeSubmissionView.swift */,
 			);
 			path = Submission;
+			sourceTree = "<group>";
+		};
+		0E4F467C2D1366DD00BB74F6 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				0E4F46832D1367EA00BB74F6 /* GalleryView.swift */,
+				0E4F467D2D1366E100BB74F6 /* GalleryViewModel.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		0E4F46872D1369BF00BB74F6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0E4F46852D1368DD00BB74F6 /* CircleView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		0E4F46882D1369C300BB74F6 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				0E4F467F2D13673000BB74F6 /* CircleGalleryViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		14374FA52B989FD500131332 = {
@@ -620,6 +656,7 @@
 				0E4F466A2D133C5E00BB74F6 /* TimeRemainingView.swift in Sources */,
 				0E35E76A2D12388E0003B857 /* HapticManager.swift in Sources */,
 				14BEC99B2C2DC3E1009D8493 /* SharedPhoto.swift in Sources */,
+				0E4F467E2D1366E100BB74F6 /* GalleryViewModel.swift in Sources */,
 				0E35E77F2D12DB1A0003B857 /* DiscoverView.swift in Sources */,
 				0E2E59262D11C80B006A3F95 /* Challenge.swift in Sources */,
 				0E35E7892D12F8EA0003B857 /* CachedAsyncImage.swift in Sources */,
@@ -631,6 +668,7 @@
 				0E35E7612D11D75C0003B857 /* Mocks.swift in Sources */,
 				0E35E7672D121B440003B857 /* PolaroidCircleView.swift in Sources */,
 				0E4F46762D13407D00BB74F6 /* ExplorerView.swift in Sources */,
+				0E4F46842D1367EA00BB74F6 /* GalleryView.swift in Sources */,
 				14BEC9972C2DC3B5009D8493 /* User.swift in Sources */,
 				0E35E76F2D123BC60003B857 /* PolaroidFrame.swift in Sources */,
 				0E35E7632D11E5430003B857 /* ParticipationState.swift in Sources */,
@@ -638,6 +676,7 @@
 				0E4F46702D133CCE00BB74F6 /* InfiniteScrollModifier.swift in Sources */,
 				0E4F46712D133CCE00BB74F6 /* MasonryLayout.swift in Sources */,
 				0E35E78D2D1301B20003B857 /* CustomSegmentedControl.swift in Sources */,
+				0E4F46862D1368DD00BB74F6 /* CircleView.swift in Sources */,
 				048E7C6C2C2F3C6000B653F4 /* FriendsView.swift in Sources */,
 				0E35E7762D12C44D0003B857 /* FormatChallengeTimeUseCase.swift in Sources */,
 				048E7C682C2F08EA00B653F4 /* SettingsView.swift in Sources */,
@@ -648,6 +687,7 @@
 				0E4F46742D133FF500BB74F6 /* Tab.swift in Sources */,
 				048E7C6E2C2F3CE900B653F4 /* ChallengeSubmissionView.swift in Sources */,
 				14BEC9992C2DC3D6009D8493 /* Thread.swift in Sources */,
+				0E4F46802D13673000BB74F6 /* CircleGalleryViewModel.swift in Sources */,
 				0E2E59292D11C82D006A3F95 /* ChallengeService.swift in Sources */,
 				048E7C662C2F08B500B653F4 /* RootView.swift in Sources */,
 				14374FDD2B98A02600131332 /* UnsplashService.swift in Sources */,

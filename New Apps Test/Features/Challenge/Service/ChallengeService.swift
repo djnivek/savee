@@ -8,7 +8,10 @@
 import Foundation
 
 protocol ChallengeService {
-    func getCurrentChallenge() async throws -> Challenge
+    func currentChallenge() async throws -> Challenge
     func submitParticipation(_ image: Data, for challengeId: UUID) async throws
-    func getUserParticipation(for challengeId: UUID) async throws -> Participation?
+    func userParticipation(for challengeId: UUID) async throws -> Participation?
+    
+    func previousChallenge() async throws -> Challenge
+    func participations(for challengeId: UUID) async throws -> [Participation]
 }

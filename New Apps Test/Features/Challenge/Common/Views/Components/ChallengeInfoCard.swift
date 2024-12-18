@@ -1,10 +1,17 @@
-import SwiftUI
+//
+//  ChallengeInfoCard.swift
+//  New Apps Test
+//
+//  Created by Kevin MACHADO on 18/12/2024.
+//
 
 import SwiftUI
 
-struct TimeRemainingView: View {
+struct ChallengeInfoCard: View {
     let timeRemaining: String
     let progress: Double
+    let title: String
+    let description: String
     
     @State private var borderProgress: Double = 0
     @State private var showBorder: Bool = false
@@ -15,16 +22,30 @@ struct TimeRemainingView: View {
     private let cycleInterval: Double = 30
     
     var body: some View {
-        HStack(spacing: 8) {
-            Text(timeRemaining)
-                .font(.system(size: 32, weight: .bold, design: .rounded))
-                .monospacedDigit()
-            Image(systemName: "clock.circle.fill")
-                .font(.title2)
-                .foregroundStyle(.secondary)
+        VStack(spacing: 24) {
+            // Timer section
+            HStack(spacing: 8) {
+                Text(timeRemaining)
+                    .font(.title2.bold())
+                    .monospacedDigit()
+                Image(systemName: "clock.circle.fill")
+                    .font(.title2)
+                    .foregroundStyle(.secondary)
+            }
+            
+            // Challenge info section
+            VStack(alignment: .leading, spacing: 8) {
+                Text(title)
+                    .font(.title.bold())
+                Text(description)
+                    .font(.headline)
+                    .foregroundStyle(.secondary)
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
         }
         .frame(maxWidth: .infinity)
-        .padding(.vertical, 12)
+        .padding(.vertical, 20)
+        .padding(.horizontal)
         .background(
             RoundedRectangle(cornerRadius: 16)
                 .fill(.ultraThinMaterial)
@@ -67,5 +88,9 @@ struct TimeRemainingView: View {
 }
 
 #Preview {
-    TimeRemainingView(timeRemaining: "00:00:00", progress: 0.75)
+    ChallengeInfoCard(
+        timeRemaining: "00-00-00",
+        progress: 0.8,
+        title: "Test",
+        description: "The description")
 }

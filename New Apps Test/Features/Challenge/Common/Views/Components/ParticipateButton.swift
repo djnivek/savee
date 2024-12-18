@@ -2,8 +2,7 @@ import SwiftUI
 
 struct ParticipateButton: View {
     let hasParticipated: Bool
-    let onParticipate: (Data) -> Void
-    @State private var showingSubmission = false
+    @Binding var showingSubmission: Bool
     
     var body: some View {
         Button {
@@ -18,7 +17,7 @@ struct ParticipateButton: View {
                     .foregroundColor(.secondary)
                     .clipShape(RoundedRectangle(cornerRadius: 16))
             } else {
-                Label("Je participe", systemImage: "camera.fill")
+                Label("J'accepte le challenge !", systemImage: "camera.fill")
                     .font(.headline)
                     .frame(maxWidth: .infinity)
                     .padding()
@@ -28,13 +27,5 @@ struct ParticipateButton: View {
             }
         }
         .disabled(hasParticipated)
-        .sheet(isPresented: $showingSubmission) {
-            ChallengeSubmissionView(
-                isPresented: $showingSubmission,
-                onSubmit: onParticipate
-            )
-            .presentationDetents([.medium, .large])
-            .presentationDragIndicator(.visible)
-        }
     }
 }

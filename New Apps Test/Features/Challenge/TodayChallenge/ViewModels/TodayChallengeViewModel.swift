@@ -22,19 +22,23 @@ class TodayChallengeViewModel {
     
     private let challengeService: ChallengeService
     private let formatTime: FormatChallengeTimeUseCase
+    private let calculateProgress: CalculateChallengeProgressUseCase
     private var timer: Timer?
     var participations: [ParticipationState] = Array(repeating: .blurred, count: 9)
     private var userParticipationIndex: Int?
     
     var state: State = .loading
     var formattedTimeRemaining: String = "--:--:--"
+    var progress: Double = 0
     
     init(
         challengeService: ChallengeService,
-        formatTime: FormatChallengeTimeUseCase = DefaultFormatChallengeTimeUseCase()
+        formatTime: FormatChallengeTimeUseCase = DefaultFormatChallengeTimeUseCase(),
+        calculateProgress: CalculateChallengeProgressUseCase = DefaultCalculateChallengeProgressUseCase()
     ) {
         self.challengeService = challengeService
         self.formatTime = formatTime
+        self.calculateProgress = calculateProgress
     }
     
     @MainActor
@@ -82,6 +86,8 @@ class TodayChallengeViewModel {
     
     private func updateTime(for challenge: Challenge) {
         formattedTimeRemaining = formatTime.execute(challenge)
+        progress = calculateProgress.execute(challenge)
+        print(progress)
     }
     
     deinit {

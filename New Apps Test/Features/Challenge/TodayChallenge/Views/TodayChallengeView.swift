@@ -9,9 +9,13 @@ import SwiftUI
 
 struct TodayChallengeView: View {
     @State private var viewModel: TodayChallengeViewModel
+    @State private var showingSubmission = false
     
-    init(viewModel: TodayChallengeViewModel) {
+    let hapticManager: HapticManaging
+    
+    init(viewModel: TodayChallengeViewModel, hapticManager: HapticManaging) {
         self.viewModel = viewModel
+        self.hapticManager = hapticManager
     }
     
     var body: some View {
@@ -22,7 +26,7 @@ struct TodayChallengeView: View {
                     case .loading:
                         ProgressView()
                             .scaleEffect(1.5)
-                    
+                        
                     case .loaded(let challenge):
                         challengeContent(challenge)
                         
@@ -43,22 +47,38 @@ struct TodayChallengeView: View {
     @ViewBuilder
     private func challengeContent(_ challenge: Challenge) -> some View {
         VStack(spacing: 32) {
-            TimeRemainingView(timeRemaining: viewModel.formattedTimeRemaining)
-            
-            ChallengeInfoView(
+            ChallengeInfoCard(
+                timeRemaining: viewModel.formattedTimeRemaining,
+                progress: viewModel.progress,
                 title: challenge.title,
                 description: challenge.description
             )
             
             ParticipateButton(
-                hasParticipated: viewModel.hasParticipated
+                hasParticipated: viewModel.hasParticipated,
+                showingSubmission: $showingSubmission
+            )
+            
+            ParticipationsGridView(
+                participations: viewModel.participations,
+                hasParticipated: viewModel.hasParticipated,
+                hapticManager: hapticManager,
+                onParticipate: { showingSubmission = true },
+                onPremiumAccess: {
+                    print("Premium access required")
+                }
+            )
+        }
+        .sheet(isPresented: $showingSubmission) {
+            ChallengeSubmissionView(
+                isPresented: $showingSubmission
             ) { imageData in
                 Task {
                     await viewModel.submitParticipation(image: imageData)
                 }
             }
-            
-            ParticipationsGridView(participations: viewModel.participations)
+            .presentationDetents([.medium, .large])
+            .presentationDragIndicator(.visible)
         }
     }
 }
@@ -75,7 +95,9 @@ extension Color {
 
 
 #Preview {
-    TodayChallengeView(viewModel: TodayChallengeViewModel(
-        challengeService: MockChallengeService()
-    ))
+    TodayChallengeView(
+        viewModel: TodayChallengeViewModel(
+            challengeService: MockChallengeService()
+        ),
+        hapticManager: DumbHapticManager())
 }

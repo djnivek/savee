@@ -8,26 +8,35 @@
 import Foundation
 
 extension Challenge {
+    /// Mock challenge that simulates a daily challenge starting at the last 10:00 GMT
+    /// and ending at the next 10:00 GMT. For testing and preview purposes only.
     static var mocked: Challenge {
         let now = Date().timeIntervalSince1970
-        
         let secondsInDay: TimeInterval = 24 * 60 * 60
-        let secondsSinceMidnight = TimeInterval(Int(now) % Int(secondsInDay))
         let tenAMInSeconds: TimeInterval = 10 * 60 * 60
         
+        // Calculate seconds since midnight GMT
+        let secondsSinceMidnight = TimeInterval(Int(now) % Int(secondsInDay))
+        
+        // Determine start timestamp (last 10:00 GMT)
         let startTimestamp: TimeInterval
         if secondsSinceMidnight >= tenAMInSeconds {
-            startTimestamp = now - secondsSinceMidnight + secondsInDay + tenAMInSeconds
-        } else {
+            // If after 10:00, start is today at 10:00
             startTimestamp = now - secondsSinceMidnight + tenAMInSeconds
+        } else {
+            // If before 10:00, start was yesterday at 10:00
+            startTimestamp = now - secondsSinceMidnight + tenAMInSeconds - secondsInDay
         }
+        
+        // End timestamp is always the next 10:00 GMT
+        let endTimestamp = startTimestamp + secondsInDay
         
         return Challenge(
             id: UUID(),
             title: "Un poirier et un lavabo",
-            description: "Réaliser un poirier devant un lavabo",
+            description: "Réalise un poirier devant un lavabo!",
             startTimestamp: startTimestamp,
-            endTimestamp: startTimestamp
+            endTimestamp: endTimestamp
         )
     }
 }

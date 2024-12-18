@@ -45,6 +45,11 @@
 		0E4F46802D13673000BB74F6 /* CircleGalleryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4F467F2D13673000BB74F6 /* CircleGalleryViewModel.swift */; };
 		0E4F46842D1367EA00BB74F6 /* GalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4F46832D1367EA00BB74F6 /* GalleryView.swift */; };
 		0E4F46862D1368DD00BB74F6 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4F46852D1368DD00BB74F6 /* CircleView.swift */; };
+		0E4F468B2D13704600BB74F6 /* LockedMosaicOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4F468A2D13704600BB74F6 /* LockedMosaicOverlay.swift */; };
+		0E4F468D2D137B3B00BB74F6 /* DumbHapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4F468C2D137B3B00BB74F6 /* DumbHapticManager.swift */; };
+		0E4F468F2D137FDF00BB74F6 /* AnimatedBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4F468E2D137FDF00BB74F6 /* AnimatedBorder.swift */; };
+		0E4F46912D13832E00BB74F6 /* CalculateChallengeProgressUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4F46902D13832E00BB74F6 /* CalculateChallengeProgressUseCase.swift */; };
+		0E4F46932D13878500BB74F6 /* ChallengeInfoCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4F46922D13878500BB74F6 /* ChallengeInfoCard.swift */; };
 		14374FB22B989FD500131332 /* New_Apps_TestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14374FB12B989FD500131332 /* New_Apps_TestApp.swift */; };
 		14374FB62B989FD700131332 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14374FB52B989FD700131332 /* Assets.xcassets */; };
 		14374FBA2B989FD700131332 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14374FB92B989FD700131332 /* Preview Assets.xcassets */; };
@@ -114,6 +119,11 @@
 		0E4F467F2D13673000BB74F6 /* CircleGalleryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleGalleryViewModel.swift; sourceTree = "<group>"; };
 		0E4F46832D1367EA00BB74F6 /* GalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryView.swift; sourceTree = "<group>"; };
 		0E4F46852D1368DD00BB74F6 /* CircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
+		0E4F468A2D13704600BB74F6 /* LockedMosaicOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockedMosaicOverlay.swift; sourceTree = "<group>"; };
+		0E4F468C2D137B3B00BB74F6 /* DumbHapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DumbHapticManager.swift; sourceTree = "<group>"; };
+		0E4F468E2D137FDF00BB74F6 /* AnimatedBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedBorder.swift; sourceTree = "<group>"; };
+		0E4F46902D13832E00BB74F6 /* CalculateChallengeProgressUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateChallengeProgressUseCase.swift; sourceTree = "<group>"; };
+		0E4F46922D13878500BB74F6 /* ChallengeInfoCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeInfoCard.swift; sourceTree = "<group>"; };
 		14374FAE2B989FD500131332 /* New Apps Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "New Apps Test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		14374FB12B989FD500131332 /* New_Apps_TestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = New_Apps_TestApp.swift; sourceTree = "<group>"; };
 		14374FB52B989FD700131332 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -232,6 +242,7 @@
 		0E35E75F2D11D7590003B857 /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
+				0E4F468C2D137B3B00BB74F6 /* DumbHapticManager.swift */,
 				0E35E7602D11D75C0003B857 /* Mocks.swift */,
 			);
 			path = Mocks;
@@ -240,6 +251,7 @@
 		0E35E7682D12388A0003B857 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				0E4F468E2D137FDF00BB74F6 /* AnimatedBorder.swift */,
 				0E35E78B2D1301A50003B857 /* CustomSegmentedControl */,
 				0E35E7882D12F8EA0003B857 /* CachedAsyncImage.swift */,
 				0E35E78A2D13019F0003B857 /* HapticManager */,
@@ -260,6 +272,7 @@
 		0E35E7722D12C2E10003B857 /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
+				0E4F46902D13832E00BB74F6 /* CalculateChallengeProgressUseCase.swift */,
 				0E35E7752D12C44D0003B857 /* FormatChallengeTimeUseCase.swift */,
 			);
 			path = UseCases;
@@ -322,6 +335,7 @@
 		0E4F46572D1339C500BB74F6 /* TodayChallenge */ = {
 			isa = PBXGroup;
 			children = (
+				0E4F46892D13704200BB74F6 /* Components */,
 				0E4F46592D133A0E00BB74F6 /* Views */,
 				0E4F46582D133A0700BB74F6 /* ViewModels */,
 			);
@@ -356,6 +370,7 @@
 		0E4F46632D133C5E00BB74F6 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				0E4F46922D13878500BB74F6 /* ChallengeInfoCard.swift */,
 				0E4F465D2D133C5E00BB74F6 /* ChallengeInfoView.swift */,
 				0E4F465E2D133C5E00BB74F6 /* ErrorView.swift */,
 				0E4F465F2D133C5E00BB74F6 /* ParticipateButton.swift */,
@@ -451,6 +466,14 @@
 				0E4F467F2D13673000BB74F6 /* CircleGalleryViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		0E4F46892D13704200BB74F6 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				0E4F468A2D13704600BB74F6 /* LockedMosaicOverlay.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		14374FA52B989FD500131332 = {
@@ -671,6 +694,7 @@
 				0E4F46842D1367EA00BB74F6 /* GalleryView.swift in Sources */,
 				14BEC9972C2DC3B5009D8493 /* User.swift in Sources */,
 				0E35E76F2D123BC60003B857 /* PolaroidFrame.swift in Sources */,
+				0E4F46932D13878500BB74F6 /* ChallengeInfoCard.swift in Sources */,
 				0E35E7632D11E5430003B857 /* ParticipationState.swift in Sources */,
 				14BEC9952C2DC39B009D8493 /* ThreadChatView.swift in Sources */,
 				0E4F46702D133CCE00BB74F6 /* InfiniteScrollModifier.swift in Sources */,
@@ -678,14 +702,18 @@
 				0E35E78D2D1301B20003B857 /* CustomSegmentedControl.swift in Sources */,
 				0E4F46862D1368DD00BB74F6 /* CircleView.swift in Sources */,
 				048E7C6C2C2F3C6000B653F4 /* FriendsView.swift in Sources */,
+				0E4F468F2D137FDF00BB74F6 /* AnimatedBorder.swift in Sources */,
 				0E35E7762D12C44D0003B857 /* FormatChallengeTimeUseCase.swift in Sources */,
 				048E7C682C2F08EA00B653F4 /* SettingsView.swift in Sources */,
+				0E4F46912D13832E00BB74F6 /* CalculateChallengeProgressUseCase.swift in Sources */,
 				0E35E77B2D12D23C0003B857 /* UnsplashImage.swift in Sources */,
 				0E35E76C2D123B110003B857 /* HapticManaging.swift in Sources */,
 				0E35E78F2D1301C30003B857 /* CustomSegmentItem.swift in Sources */,
 				14374FB22B989FD500131332 /* New_Apps_TestApp.swift in Sources */,
+				0E4F468D2D137B3B00BB74F6 /* DumbHapticManager.swift in Sources */,
 				0E4F46742D133FF500BB74F6 /* Tab.swift in Sources */,
 				048E7C6E2C2F3CE900B653F4 /* ChallengeSubmissionView.swift in Sources */,
+				0E4F468B2D13704600BB74F6 /* LockedMosaicOverlay.swift in Sources */,
 				14BEC9992C2DC3D6009D8493 /* Thread.swift in Sources */,
 				0E4F46802D13673000BB74F6 /* CircleGalleryViewModel.swift in Sources */,
 				0E2E59292D11C82D006A3F95 /* ChallengeService.swift in Sources */,

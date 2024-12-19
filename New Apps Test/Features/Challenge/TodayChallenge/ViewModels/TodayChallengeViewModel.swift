@@ -89,7 +89,7 @@ class TodayChallengeViewModel {
     func startTimer() {
         stopTimer()
         
-        guard let challenge = currentChallenge else { return }
+        guard currentChallenge != nil else { return }
         updateTime()
         
         timer = Timer(timeInterval: 1, repeats: true) { [weak self] _ in

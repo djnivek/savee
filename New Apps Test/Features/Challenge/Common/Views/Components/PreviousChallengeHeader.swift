@@ -49,7 +49,7 @@ struct PreviousChallengeHeader: View {
         HStack(spacing: 4) {
             Image(systemName: "photo.stack.fill")
                 .font(.subheadline)
-            Text("2.8k")
+            Text("259.8k")
                 .font(.subheadline.bold())
         }
         .foregroundStyle(.secondary)
@@ -58,9 +58,9 @@ struct PreviousChallengeHeader: View {
     private func formatDate(_ timestamp: TimeInterval) -> String {
         let date = Date(timeIntervalSince1970: timestamp)
         let formatter = DateFormatter()
-        formatter.dateFormat = "dd MMM"
-        formatter.locale = Locale(identifier: "fr_FR")
-        return formatter.string(from: date)
+        formatter.dateFormat = "EEEE d MMMM"
+        formatter.locale = Locale.current
+        return formatter.string(from: date).capitalized
     }
 }
 

@@ -16,6 +16,7 @@ struct PolaroidCircleView: View {
     @State private var isAnimating = false
     @State private var shouldDismiss = false
     @State private var backgroundOpacity = 1.0
+    @State private var animationTask: Task<Void, Never>?
     
     init(
         numberOfFrames: Int = 10,
@@ -31,7 +32,6 @@ struct PolaroidCircleView: View {
     
     var body: some View {
         ZStack {
-            // Polaroid circle content
             GeometryReader { geometry in
                 ZStack {
                     ForEach(frames) { frame in
@@ -61,32 +61,35 @@ struct PolaroidCircleView: View {
             .ignoresSafeArea()
             .opacity(backgroundOpacity)
         )
-        .onAppear(perform: handleAppear)
-    }
-    
-    private func handleAppear() {
-        animateIn()
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            animateOut()
+        .task {
+            await runAnimationSequence()
+        }
+        .onDisappear {
+            animationTask?.cancel()
         }
     }
     
-    private func animateIn() {
-        withAnimation(.spring(response: 0.8, dampingFraction: 0.6, blendDuration: 0.8)) {
-            isAnimating = true
-            hapticManager.playLandingSequence()
-        }
-    }
-    
-    private func animateOut() {
-        onDispersionStarted()
+    private func runAnimationSequence() async {
+        animationTask?.cancel()
         
-        withAnimation(.easeOut(duration: 0.8)) {
-            backgroundOpacity = 0
-        }
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+        animationTask = Task {
+            withAnimation(.spring(response: 0.8, dampingFraction: 0.6, blendDuration: 0.8)) {
+                isAnimating = true
+                hapticManager.playLandingSequence()
+            }
+            
+            try? await Task.sleep(for: .seconds(2))
+            guard !Task.isCancelled else { return }
+            
+            onDispersionStarted()
+            
+            withAnimation(.easeOut(duration: 0.8)) {
+                backgroundOpacity = 0
+            }
+            
+            try? await Task.sleep(for: .seconds(0.4))
+            guard !Task.isCancelled else { return }
+            
             withAnimation(.spring(response: 0.8, dampingFraction: 0.6, blendDuration: 0.8)) {
                 shouldDismiss = true
                 hapticManager.playSequence(count: 3, interval: 0.15)
@@ -121,7 +124,7 @@ struct SinglePolaroidView: View {
             return 0
         }
     }
-
+    
     private var targetX: CGFloat {
         switch polaroidState {
         case .dismissing:

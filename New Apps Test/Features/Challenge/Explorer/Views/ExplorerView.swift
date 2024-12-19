@@ -10,9 +10,12 @@ import SwiftUI
 
 struct ExplorerView: View {
     @State private var viewModel: ExplorerViewModel
-    private let unsplashService = UnsplashService()
     
-    init(viewModel: ExplorerViewModel = .init(challengeService: MockChallengeService())) {
+    init(viewModel: ExplorerViewModel = .init(
+        discoverViewModel: .init(unsplashService: UnsplashService()),
+        circleViewModel: .init(unsplashService: UnsplashService()),
+        challengeService: MockChallengeService()
+    )) {
         self._viewModel = State(initialValue: viewModel)
     }
     
@@ -29,10 +32,10 @@ struct ExplorerView: View {
                 .padding(.horizontal)
                 
                 TabView(selection: $viewModel.selectedSection) {
-                    DiscoverView(viewModel: .init(unsplashService: unsplashService))
+                    DiscoverView(viewModel: viewModel.discoverViewModel)
                         .tag(ExplorerSection.discover)
                     
-                    CircleView(viewModel: .init(unsplashService: unsplashService))
+                    CircleView(viewModel: viewModel.circleViewModel)
                         .tag(ExplorerSection.circle)
                 }
                 .tabViewStyle(.page(indexDisplayMode: .never))

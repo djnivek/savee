@@ -11,11 +11,20 @@ import Foundation
 final class ExplorerViewModel {
     private let challengeService: ChallengeService
     
+    let discoverViewModel: DiscoverGalleryViewModel
+    let circleViewModel: CircleGalleryViewModel
+    
     var selectedSection: ExplorerSection = .discover
     var previousChallenge: Challenge?
     var isShowingChallengeDetails = false
     
-    init(challengeService: ChallengeService) {
+    init(
+        discoverViewModel: DiscoverGalleryViewModel,
+        circleViewModel: CircleGalleryViewModel,
+        challengeService: ChallengeService
+    ) {
+        self.discoverViewModel = discoverViewModel
+        self.circleViewModel = circleViewModel
         self.challengeService = challengeService
     }
     

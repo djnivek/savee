@@ -6,6 +6,7 @@ struct TimeRemainingView: View {
     
     @State private var borderProgress: Double = 0
     @State private var showBorder: Bool = false
+    @State private var animationTask: Task<Void, Never>?
     
     private let drawDuration: Double = 3
     private let displayDuration: Double = 10
@@ -33,33 +34,54 @@ struct TimeRemainingView: View {
                 shouldShow: showBorder
             )
         }
-        .onAppear(perform: startAnimationCycle)
-    }
-    
-    private func startAnimationCycle() {
-        animateBorder()
-        
-        Timer.scheduledTimer(withTimeInterval: cycleInterval, repeats: true) { _ in
-            animateBorder()
+        .task {
+            await startAnimationCycle()
+        }
+        .onDisappear {
+            animationTask?.cancel()
         }
     }
     
-    private func animateBorder() {
-        borderProgress = 0
-        showBorder = true
+    private func startAnimationCycle() async {
+        animationTask?.cancel()
+        
+        animationTask = Task {
+            while !Task.isCancelled {
+                await animateBorder()
+                
+                do {
+                    try await Task.sleep(for: .seconds(cycleInterval))
+                } catch {
+                    break
+                }
+            }
+        }
+    }
+    
+    private func animateBorder() async {
+        guard !Task.isCancelled else { return }
+        
+        await MainActor.run {
+            borderProgress = 0
+            showBorder = true
+        }
         
         withAnimation(.easeInOut(duration: drawDuration)) {
             borderProgress = progress
         }
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + drawDuration + displayDuration) {
-            withAnimation(.easeInOut(duration: retractDuration)) {
-                borderProgress = 0
-            }
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + retractDuration) {
-                showBorder = false
-            }
+        try? await Task.sleep(for: .seconds(drawDuration + displayDuration))
+        guard !Task.isCancelled else { return }
+        
+        withAnimation(.easeInOut(duration: retractDuration)) {
+            borderProgress = 0
+        }
+        
+        try? await Task.sleep(for: .seconds(retractDuration))
+        guard !Task.isCancelled else { return }
+        
+        await MainActor.run {
+            showBorder = false
         }
     }
 }

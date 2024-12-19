@@ -15,11 +15,12 @@ struct ChallengeInfoCard: View {
     
     @State private var borderProgress: Double = 0
     @State private var showBorder: Bool = false
-    @State private var borderTimer: Timer?
+    @State private var animationTask: Task<Void, Never>?
     
     private let drawDuration: Double = 3
     private let displayDuration: Double = 10
     private let retractDuration: Double = 1.5
+    private let cycleInterval: Double = 30
     
     var body: some View {
         VStack(spacing: 24) {
@@ -54,45 +55,51 @@ struct ChallengeInfoCard: View {
                 shouldShow: showBorder
             )
         }
-        .onAppear(perform: setupTimer)
-        .onDisappear(perform: invalidateTimer)
+        .task {
+            await startAnimationCycle()
+        }
+        .onDisappear {
+            animationTask?.cancel()
+        }
     }
     
-    private func setupTimer() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.8) {
-            animateBorder()
-        }
+    private func startAnimationCycle() async {
+        animationTask?.cancel()
         
-        borderTimer = Timer.scheduledTimer(withTimeInterval: 30, repeats: true) { _ in
-            animateBorder()
+        animationTask = Task {
+            try? await Task.sleep(for: .seconds(2.8))
+            
+            while !Task.isCancelled {
+                await animateBorder()
+                try? await Task.sleep(for: .seconds(cycleInterval))
+            }
         }
+    }
+    
+    private func animateBorder() async {
+        guard !Task.isCancelled else { return }
         
-        if let borderTimer {
-            RunLoop.main.add(borderTimer, forMode: .common)
+        await MainActor.run {
+            borderProgress = 0
+            showBorder = true
         }
-    }
-    
-    private func invalidateTimer() {
-        borderTimer?.invalidate()
-        borderTimer = nil
-    }
-    
-    private func animateBorder() {
-        borderProgress = 0
-        showBorder = true
         
         withAnimation(.easeInOut(duration: drawDuration)) {
             borderProgress = progress
         }
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + drawDuration + displayDuration) {
-            withAnimation(.easeInOut(duration: retractDuration)) {
-                borderProgress = 0
-            }
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + retractDuration) {
-                showBorder = false
-            }
+        try? await Task.sleep(for: .seconds(drawDuration + displayDuration))
+        guard !Task.isCancelled else { return }
+        
+        withAnimation(.easeInOut(duration: retractDuration)) {
+            borderProgress = 0
+        }
+        
+        try? await Task.sleep(for: .seconds(retractDuration))
+        guard !Task.isCancelled else { return }
+        
+        await MainActor.run {
+            showBorder = false
         }
     }
 }

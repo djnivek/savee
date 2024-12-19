@@ -198,3 +198,35 @@ Here is the template for the technical decisions documentation:
     - Slightly higher battery usage
     - More complex timer setup code
     - Potential for increased CPU usage during heavy UI interaction
+
+### 8. Task-based Animation Management in SwiftUI
+
+- **Decision**: Replace GCD (DispatchQueue) and Timer with SwiftUI's Task-based lifecycle management for handling animations and timed operations.
+
+- **Alternatives Considered**:
+  - GCD with DispatchQueue.main.asyncAfter
+  - Timer.scheduledTimer with manual invalidation
+  - SwiftUI Task with structured concurrency
+
+- **Rationale**:
+  - Tasks automatically integrate with SwiftUI's view lifecycle
+  - Structured concurrency provides better safety guarantees
+  - Automatic cancellation eliminates manual cleanup code
+  - Native integration with Swift's new duration APIs
+  - Thread-safety by design
+
+- **Consequences**:
+  - More predictable cleanup behavior
+  - No resource leaks
+  - Requires iOS 15+
+  - Team needs to learn structured concurrency patterns
+
+- **Trade-offs**:
+  - Gain:
+    - Automatic resource management, better reliability
+    - Cleaner, more maintainable codebase
+    - Built-in cancellation support
+  - Loss:
+    - Some low-level timing control flexibility
+    - Familiar GCD patterns must be relearned
+    - Slightly more verbose for simple cases

@@ -15,7 +15,7 @@ struct LockedMosaicOverlay: View {
     
     @State private var shouldAnimate = false
     @State private var hapticIntensity: CGFloat = 0.5
-    @State private var animationTimer: Timer?
+    @State private var animationTask: Task<Void, Never>?
     
     private let minHapticIntensity: CGFloat = 0.1
     private let hapticDecrement: CGFloat = 0.1
@@ -44,8 +44,12 @@ struct LockedMosaicOverlay: View {
             }
         }
         .padding(32)
-        .onAppear(perform: setupTimer)
-        .onDisappear(perform: invalidateTimer)
+        .task {
+            await startAnimation()
+        }
+        .onDisappear {
+            animationTask?.cancel()
+        }
     }
     
     private var mainContent: some View {
@@ -91,30 +95,33 @@ struct LockedMosaicOverlay: View {
         }
     }
     
-    private func setupTimer() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            shouldAnimate.toggle()
-            if !hasParticipated {
-                hapticManager.playImpact(intensity: hapticIntensity)
+    private func startAnimation() async {
+        animationTask?.cancel()
+        
+        animationTask = Task {
+            try? await Task.sleep(for: .seconds(2))
+            guard !Task.isCancelled else { return }
+            
+            await MainActor.run {
+                shouldAnimate.toggle()
+                if !hasParticipated {
+                    hapticManager.playImpact(intensity: hapticIntensity)
+                }
+            }
+            
+            while !Task.isCancelled {
+                try? await Task.sleep(for: .seconds(12))
+                guard !Task.isCancelled else { break }
+                
+                await MainActor.run {
+                    shouldAnimate.toggle()
+                    if !hasParticipated {
+                        hapticIntensity = max(hapticIntensity - hapticDecrement, minHapticIntensity)
+                        hapticManager.playImpact(intensity: hapticIntensity)
+                    }
+                }
             }
         }
-        
-        animationTimer = Timer.scheduledTimer(withTimeInterval: 12, repeats: true) { _ in
-            shouldAnimate.toggle()
-            if !hasParticipated {
-                hapticIntensity = max(hapticIntensity - hapticDecrement, minHapticIntensity)
-                hapticManager.playImpact(intensity: hapticIntensity)
-            }
-        }
-        
-        if let animationTimer {
-            RunLoop.main.add(animationTimer, forMode: .common)
-        }
-    }
-    
-    private func invalidateTimer() {
-        animationTimer?.invalidate()
-        animationTimer = nil
     }
 }
 

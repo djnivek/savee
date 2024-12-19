@@ -5,6 +5,9 @@
 &nbsp;
 <img src="assets/Frame2.jpg" width="200" alt="Discover community photos"/>
 &nbsp;
+</p>
+
+<p align="center">
 <img src="assets/Frame4.jpg" width="200" alt="Premium Experience"/>
 &nbsp;
 <img src="assets/Frame3.jpg" width="200" alt="VIP real-time access"/>

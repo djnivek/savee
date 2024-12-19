@@ -2,15 +2,13 @@
 
 <p align="center">
 <img src="assets/Frame1.jpg" width="200" alt="Daily creative challenges"/>
-&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;
 <img src="assets/Frame2.jpg" width="200" alt="Discover community photos"/>
-&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;
+<img src="assets/Frame4.jpg" width="200" alt="Premium Experience"/>
+&nbsp;
 <img src="assets/Frame3.jpg" width="200" alt="VIP real-time access"/>
-</p>
-
-<p align="center">
-<img src="assets/Frame4.jpg" width="200" alt="Social engagement"/>
-&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;
 <img src="assets/Frame5.jpg" width="200" alt="Community mosaic"/>
 </p>
 

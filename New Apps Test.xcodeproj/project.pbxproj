@@ -50,6 +50,7 @@
 		0E4F468F2D137FDF00BB74F6 /* AnimatedBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4F468E2D137FDF00BB74F6 /* AnimatedBorder.swift */; };
 		0E4F46912D13832E00BB74F6 /* CalculateChallengeProgressUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4F46902D13832E00BB74F6 /* CalculateChallengeProgressUseCase.swift */; };
 		0E4F46932D13878500BB74F6 /* ChallengeInfoCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4F46922D13878500BB74F6 /* ChallengeInfoCard.swift */; };
+		0E4F46952D13997B00BB74F6 /* SplashRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4F46942D13997B00BB74F6 /* SplashRootView.swift */; };
 		14374FB22B989FD500131332 /* New_Apps_TestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14374FB12B989FD500131332 /* New_Apps_TestApp.swift */; };
 		14374FB62B989FD700131332 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14374FB52B989FD700131332 /* Assets.xcassets */; };
 		14374FBA2B989FD700131332 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14374FB92B989FD700131332 /* Preview Assets.xcassets */; };
@@ -124,6 +125,7 @@
 		0E4F468E2D137FDF00BB74F6 /* AnimatedBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedBorder.swift; sourceTree = "<group>"; };
 		0E4F46902D13832E00BB74F6 /* CalculateChallengeProgressUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateChallengeProgressUseCase.swift; sourceTree = "<group>"; };
 		0E4F46922D13878500BB74F6 /* ChallengeInfoCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeInfoCard.swift; sourceTree = "<group>"; };
+		0E4F46942D13997B00BB74F6 /* SplashRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashRootView.swift; sourceTree = "<group>"; };
 		14374FAE2B989FD500131332 /* New Apps Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "New Apps Test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		14374FB12B989FD500131332 /* New_Apps_TestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = New_Apps_TestApp.swift; sourceTree = "<group>"; };
 		14374FB52B989FD700131332 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -299,6 +301,7 @@
 		0E4F464A2D1336C800BB74F6 /* Root */ = {
 			isa = PBXGroup;
 			children = (
+				0E4F46942D13997B00BB74F6 /* SplashRootView.swift */,
 				0E4F46732D133FF500BB74F6 /* Tab.swift */,
 				048E7C652C2F08B500B653F4 /* RootView.swift */,
 			);
@@ -696,6 +699,7 @@
 				0E35E76F2D123BC60003B857 /* PolaroidFrame.swift in Sources */,
 				0E4F46932D13878500BB74F6 /* ChallengeInfoCard.swift in Sources */,
 				0E35E7632D11E5430003B857 /* ParticipationState.swift in Sources */,
+				0E4F46952D13997B00BB74F6 /* SplashRootView.swift in Sources */,
 				14BEC9952C2DC39B009D8493 /* ThreadChatView.swift in Sources */,
 				0E4F46702D133CCE00BB74F6 /* InfiniteScrollModifier.swift in Sources */,
 				0E4F46712D133CCE00BB74F6 /* MasonryLayout.swift in Sources */,

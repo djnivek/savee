@@ -36,9 +36,9 @@ enum ExplorerSection: String, Hashable {
     var title: String {
         switch self {
         case .discover:
-            return "Découvrir"
+            return "Discover"
         case .circle:
-            return "Cercle"
+            return "Circle"
         }
     }
 }

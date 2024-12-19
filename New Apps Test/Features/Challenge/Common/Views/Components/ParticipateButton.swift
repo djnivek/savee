@@ -9,7 +9,7 @@ struct ParticipateButton: View {
             showingSubmission = true
         } label: {
             if hasParticipated {
-                Label("Défi relevé! Tu gères!", systemImage: "checkmark.circle.fill")
+                Label("Challenge completed! You rock!", systemImage: "checkmark.circle.fill")
                     .font(.headline)
                     .frame(maxWidth: .infinity)
                     .padding()
@@ -17,7 +17,7 @@ struct ParticipateButton: View {
                     .foregroundColor(.secondary)
                     .clipShape(RoundedRectangle(cornerRadius: 16))
             } else {
-                Label("Je relève le défi!", systemImage: "camera.fill")
+                Label("Change accepted!", systemImage: "camera.fill")
                     .font(.headline)
                     .frame(maxWidth: .infinity)
                     .padding()

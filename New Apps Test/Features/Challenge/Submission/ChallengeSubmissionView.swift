@@ -48,7 +48,7 @@ struct ChallengeSubmissionView: View {
                     .font(.system(size: 48))
                     .foregroundStyle(.secondary)
                 
-                Text("Appuie pour prendre ta photo!")
+                Text("Tap to take your photo!")
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
             }
@@ -64,7 +64,7 @@ struct ChallengeSubmissionView: View {
     
     private var submitButton: some View {
         Button(action: submitPhoto) {
-            Label("Envoyer mon chef-d'œuvre!", systemImage: "checkmark.circle.fill")
+            Label("Submit my masterpiece!", systemImage: "checkmark.circle.fill")
                 .font(.headline)
                 .frame(maxWidth: .infinity)
                 .padding()

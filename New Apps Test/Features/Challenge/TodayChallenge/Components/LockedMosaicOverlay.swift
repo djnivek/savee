@@ -29,7 +29,7 @@ struct LockedMosaicOverlay: View {
                     onPremiumAccess?()
                 } label: {
                     VStack(spacing: 4) {
-                        Text("Deviens VIP, vois tout maintenant ! ✨")
+                        Text("Become VIP, see everything now! ✨")
                             .font(.headline)
                             .foregroundStyle(.white)
                         Text("4,99€/mois")
@@ -74,7 +74,7 @@ struct LockedMosaicOverlay: View {
                 .foregroundStyle(.secondary)
                 .symbolEffect(.bounce.up.byLayer, options: .nonRepeating, value: shouldAnimate)
             
-            Text("Ton chef-d'œuvre est bien gardé! La grande révélation c'est demain! 🎁")
+            Text("Your masterpiece is safe! The big reveal is tomorrow! 🎁")
                 .font(.headline)
                 .multilineTextAlignment(.center)
                 .foregroundStyle(.secondary)
@@ -88,7 +88,7 @@ struct LockedMosaicOverlay: View {
                 .foregroundStyle(.secondary)
                 .symbolEffect(.bounce.up.byLayer, options: .nonRepeating, value: shouldAnimate)
             
-            Text("Hé! Montre-nous ta créativité pour voir ce que les autres préparent 😎")
+            Text("Hey! Show us your creativity to see what others are preparing 😎")
                 .font(.headline)
                 .multilineTextAlignment(.center)
                 .foregroundStyle(.secondary)

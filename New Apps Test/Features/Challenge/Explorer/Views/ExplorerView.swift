@@ -53,7 +53,7 @@ struct ExplorerView: View {
                         ChallengeDetailsView(challenge: challenge)
                             .presentationDetents([.medium])
                             .presentationDragIndicator(.visible)
-                            .navigationTitle("Détails du challenge")
+                            .navigationTitle("Challenge details")
                             .navigationBarTitleDisplayMode(.inline)
                     }
                 }

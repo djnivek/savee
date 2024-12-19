@@ -15,8 +15,8 @@ class MockChallengeService: ChallengeService {
         
         return Challenge(
             id: UUID(),
-            title: "Le soleil se couche?",
-            description: "Captures un drole de coucher de soleil",
+            title: "Epic Sunset Alert!",
+            description: "Snap the wackiest sunset you can find! Get creative with those golden hour vibes",
             startTimestamp: now - dayInSeconds,
             endTimestamp: now - 1
         )

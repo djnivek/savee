@@ -33,8 +33,8 @@ extension Challenge {
         
         return Challenge(
             id: UUID(),
-            title: "Un poirier et un lavabo",
-            description: "Réalise un poirier devant un lavabo!",
+            title: "Sink-side Handstand! 🤸‍♂️",
+            description: "Strike a handstand pose by your bathroom sink! Safety first, epic pics second!",
             startTimestamp: startTimestamp,
             endTimestamp: endTimestamp
         )

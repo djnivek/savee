@@ -7,9 +7,12 @@
 
 import SwiftUI
 
+import SwiftUI
+
 struct TodayChallengeView: View {
     @State private var viewModel: TodayChallengeViewModel
     @State private var showingSubmission = false
+    @State private var shouldAnimate = false
     
     let hapticManager: HapticManaging
     
@@ -41,6 +44,10 @@ struct TodayChallengeView: View {
         }
         .task {
             await viewModel.loadChallenge()
+            try? await Task.sleep(for: .seconds(2.6))
+            withAnimation(.spring(response: 0.6, dampingFraction: 0.7)) {
+                shouldAnimate = true
+            }
         }
         .onDisappear {
             viewModel.stopTimer()
@@ -56,11 +63,15 @@ struct TodayChallengeView: View {
                 title: challenge.title,
                 description: challenge.description
             )
+            .offset(y: shouldAnimate ? 0 : 50)
+            .opacity(shouldAnimate ? 1 : 0)
             
             ParticipateButton(
                 hasParticipated: viewModel.hasParticipated,
                 showingSubmission: $showingSubmission
             )
+            .offset(y: shouldAnimate ? 0 : 50)
+            .opacity(shouldAnimate ? 1 : 0)
             
             ParticipationsGridView(
                 participations: viewModel.participations,

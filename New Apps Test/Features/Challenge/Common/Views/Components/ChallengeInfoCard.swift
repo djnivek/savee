@@ -59,7 +59,9 @@ struct ChallengeInfoCard: View {
     }
     
     private func setupTimer() {
-        animateBorder()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.8) {
+            animateBorder()
+        }
         
         borderTimer = Timer.scheduledTimer(withTimeInterval: 30, repeats: true) { _ in
             animateBorder()

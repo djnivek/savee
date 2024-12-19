@@ -8,60 +8,60 @@
 import SwiftUI
 
 struct PolaroidCircleView: View {
-    private let frames: [PolaroidFrame]
-    private let circleRadius: CGFloat
-    private let hapticManager: HapticManaging
+    let frames: [PolaroidFrame]
+    let circleRadius: CGFloat
+    let hapticManager: HapticManaging
+    let onDispersionStarted: () -> Void
     
     @State private var isAnimating = false
     @State private var shouldDismiss = false
+    @State private var backgroundOpacity = 1.0
     
     init(
         numberOfFrames: Int = 10,
         circleRadius: CGFloat = 100,
-        hapticManager: HapticManaging = HapticManager.shared
+        hapticManager: HapticManaging = HapticManager.shared,
+        onDispersionStarted: @escaping () -> Void
     ) {
         self.frames = PolaroidFrame.createFrames(count: numberOfFrames)
         self.circleRadius = circleRadius
         self.hapticManager = hapticManager
+        self.onDispersionStarted = onDispersionStarted
     }
     
     var body: some View {
-        GeometryReader { geometry in
-            ZStack {
-                backgroundGradient
-                
-                polaroidCircle
-                    .frame(width: 300, height: 300)
-                    .position(x: geometry.size.width / 2, y: geometry.size.height / 2)
-            }
-        }
-        .onAppear(perform: handleAppear)
-    }
-    
-    private var backgroundGradient: some View {
-        LinearGradient(
-            gradient: Gradient(colors: [
-                Color(red: 0.7, green: 0.3, blue: 0.8),
-                Color(red: 0.4, green: 0.2, blue: 0.7)
-            ]),
-            startPoint: .topLeading,
-            endPoint: .bottomTrailing
-        )
-        .ignoresSafeArea()
-    }
-    
-    private var polaroidCircle: some View {
         ZStack {
-            ForEach(frames) { frame in
-                SinglePolaroidView(
-                    frame: frame,
-                    isAnimating: isAnimating,
-                    shouldDismiss: shouldDismiss,
-                    circleRadius: circleRadius
-                )
-                .zIndex(Double(frame.index))
+            // Polaroid circle content
+            GeometryReader { geometry in
+                ZStack {
+                    ForEach(frames) { frame in
+                        SinglePolaroidView(
+                            frame: frame,
+                            isAnimating: isAnimating,
+                            shouldDismiss: shouldDismiss,
+                            circleRadius: circleRadius,
+                            screenHeight: geometry.size.height
+                        )
+                        .zIndex(Double(frame.index))
+                    }
+                }
+                .frame(width: 300, height: 300)
+                .position(x: geometry.size.width / 2, y: geometry.size.height / 2)
             }
         }
+        .background(
+            LinearGradient(
+                gradient: Gradient(colors: [
+                    Color(red: 0.7, green: 0.3, blue: 0.8),
+                    Color(red: 0.4, green: 0.2, blue: 0.7)
+                ]),
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
+            .ignoresSafeArea()
+            .opacity(backgroundOpacity)
+        )
+        .onAppear(perform: handleAppear)
     }
     
     private func handleAppear() {
@@ -80,19 +80,58 @@ struct PolaroidCircleView: View {
     }
     
     private func animateOut() {
-        withAnimation(.spring(response: 0.8, dampingFraction: 0.6, blendDuration: 0.8)) {
-            shouldDismiss = true
-            hapticManager.playSequence(count: 3, interval: 0.15)
+        onDispersionStarted()
+        
+        withAnimation(.easeOut(duration: 0.8)) {
+            backgroundOpacity = 0
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+            withAnimation(.spring(response: 0.8, dampingFraction: 0.6, blendDuration: 0.8)) {
+                shouldDismiss = true
+                hapticManager.playSequence(count: 3, interval: 0.15)
+            }
         }
     }
 }
 
-// MARK: - Single Polaroid View
 struct SinglePolaroidView: View {
     let frame: PolaroidFrame
     let isAnimating: Bool
     let shouldDismiss: Bool
     let circleRadius: CGFloat
+    let screenHeight: CGFloat
+    
+    private var polaroidState: PolaroidState {
+        if shouldDismiss {
+            return .dismissing
+        } else if isAnimating {
+            return .circle
+        }
+        return .initial
+    }
+    
+    private var targetY: CGFloat {
+        switch polaroidState {
+        case .dismissing:
+            return screenHeight * 0.75 - screenHeight / 2
+        case .circle:
+            return circleRadius * sin((frame.angle) * .pi / 180)
+        case .initial:
+            return 0
+        }
+    }
+
+    private var targetX: CGFloat {
+        switch polaroidState {
+        case .dismissing:
+            return 0
+        case .circle:
+            return circleRadius * cos((frame.angle) * .pi / 180)
+        case .initial:
+            return 0
+        }
+    }
     
     var body: some View {
         ZStack {
@@ -101,16 +140,23 @@ struct SinglePolaroidView: View {
                 .frame(width: 70, height: 80)
                 .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 2)
                 .overlay(photoArea)
-                .rotation3DEffect(rotationAngle, axis: rotationAxis)
+                .rotation3DEffect(
+                    polaroidState == .circle ? .degrees(15) : .degrees(0),
+                    axis: (
+                        x: cos((frame.angle) * .pi / 180),
+                        y: sin((frame.angle) * .pi / 180),
+                        z: 0.3
+                    )
+                )
                 .rotationEffect(.degrees(frame.angle + frame.rotationOffset))
-                .scaleEffect(isAnimating && !shouldDismiss ? frame.scaleOffset : 0.1)
-                .offset(x: xOffset, y: yOffset)
-                .opacity(shouldDismiss ? 0 : 1)
+                .scaleEffect(polaroidState == .initial ? 0.1 : frame.scaleOffset)
+                .offset(x: targetX, y: targetY)
+                .opacity(polaroidState == .dismissing ? 0 : 1)
         }
         .animation(
             .spring(response: 0.8, dampingFraction: 0.6, blendDuration: 0.8)
-            .delay(shouldDismiss ? Double(frame.index) * 0.05 : Double(frame.index) * 0.1),
-            value: isAnimating || shouldDismiss
+            .delay(Double(frame.index) * 0.1),
+            value: polaroidState
         )
     }
     
@@ -120,29 +166,15 @@ struct SinglePolaroidView: View {
             .frame(width: 60, height: 60)
             .offset(y: -5)
     }
-    
-    private var rotationAngle: Angle {
-        .degrees(isAnimating ? 15 : 0)
-    }
-    
-    private var rotationAxis: (x: CGFloat, y: CGFloat, z: CGFloat) {
-        (
-            x: cos((frame.angle) * .pi / 180),
-            y: sin((frame.angle) * .pi / 180),
-            z: 0.3
-        )
-    }
-    
-    private var xOffset: CGFloat {
-        isAnimating && !shouldDismiss ? circleRadius * cos((frame.angle) * .pi / 180) : 0
-    }
-    
-    private var yOffset: CGFloat {
-        isAnimating && !shouldDismiss ? circleRadius * sin((frame.angle) * .pi / 180) : 0
-    }
+}
+
+private enum PolaroidState {
+    case initial
+    case circle
+    case dismissing
 }
 
 // MARK: - Preview
 #Preview {
-    PolaroidCircleView()
+    PolaroidCircleView(onDispersionStarted: {})
 }

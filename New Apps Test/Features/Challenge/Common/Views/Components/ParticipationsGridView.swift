@@ -14,15 +14,7 @@ struct ParticipationsGridView: View {
     ]
     
     var body: some View {
-        VStack(spacing: 12) {
-            HStack {
-                Text("Ça se passe en ce moment")
-                    .font(.headline)
-                Spacer()
-                Text("🔒")
-                    .font(.title3)
-            }
-            
+        VStack(spacing: 12) {            
             ZStack {
                 LazyVGrid(columns: columns, spacing: 4) {
                     ForEach(Array(participations.enumerated()), id: \.offset) { index, participation in

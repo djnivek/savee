@@ -70,7 +70,7 @@ struct LockedMosaicOverlay: View {
                 .foregroundStyle(.secondary)
                 .symbolEffect(.bounce.up.byLayer, options: .nonRepeating, value: shouldAnimate)
             
-            Text("Ta photo est au chaud ! Reviens demain pour la surprise")
+            Text("Ton chef-d'œuvre est bien gardé! La grande révélation c'est demain! 🎁")
                 .font(.headline)
                 .multilineTextAlignment(.center)
                 .foregroundStyle(.secondary)
@@ -84,7 +84,7 @@ struct LockedMosaicOverlay: View {
                 .foregroundStyle(.secondary)
                 .symbolEffect(.bounce.up.byLayer, options: .nonRepeating, value: shouldAnimate)
             
-            Text("Hé ! Montre-nous ta créativité pour voir ce que les autres préparent 😎")
+            Text("Hé! Montre-nous ta créativité pour voir ce que les autres préparent 😎")
                 .font(.headline)
                 .multilineTextAlignment(.center)
                 .foregroundStyle(.secondary)

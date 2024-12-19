@@ -1,7 +1,5 @@
 import SwiftUI
 
-import SwiftUI
-
 struct TimeRemainingView: View {
     let timeRemaining: String
     let progress: Double

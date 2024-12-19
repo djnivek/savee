@@ -55,6 +55,9 @@
 		0E4F469E2D13A43900BB74F6 /* FloatingActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4F469D2D13A43900BB74F6 /* FloatingActionButton.swift */; };
 		0E4F46A02D13A46E00BB74F6 /* ChallengeDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4F469F2D13A46E00BB74F6 /* ChallengeDetailsView.swift */; };
 		0E4F46A22D13ACC200BB74F6 /* CircleDetailCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4F46A12D13ACC200BB74F6 /* CircleDetailCardView.swift */; };
+		0E4F46A52D13B80900BB74F6 /* ConfettiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4F46A42D13B80900BB74F6 /* ConfettiView.swift */; };
+		0E4F46A72D13B81000BB74F6 /* ConfettiFallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4F46A62D13B80F00BB74F6 /* ConfettiFallView.swift */; };
+		0E4F46A92D13B82900BB74F6 /* SuccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4F46A82D13B82900BB74F6 /* SuccessView.swift */; };
 		14374FB22B989FD500131332 /* New_Apps_TestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14374FB12B989FD500131332 /* New_Apps_TestApp.swift */; };
 		14374FB62B989FD700131332 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14374FB52B989FD700131332 /* Assets.xcassets */; };
 		14374FBA2B989FD700131332 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14374FB92B989FD700131332 /* Preview Assets.xcassets */; };
@@ -134,6 +137,9 @@
 		0E4F469D2D13A43900BB74F6 /* FloatingActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingActionButton.swift; sourceTree = "<group>"; };
 		0E4F469F2D13A46E00BB74F6 /* ChallengeDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeDetailsView.swift; sourceTree = "<group>"; };
 		0E4F46A12D13ACC200BB74F6 /* CircleDetailCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleDetailCardView.swift; sourceTree = "<group>"; };
+		0E4F46A42D13B80900BB74F6 /* ConfettiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfettiView.swift; sourceTree = "<group>"; };
+		0E4F46A62D13B80F00BB74F6 /* ConfettiFallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfettiFallView.swift; sourceTree = "<group>"; };
+		0E4F46A82D13B82900BB74F6 /* SuccessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessView.swift; sourceTree = "<group>"; };
 		14374FAE2B989FD500131332 /* New Apps Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "New Apps Test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		14374FB12B989FD500131332 /* New_Apps_TestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = New_Apps_TestApp.swift; sourceTree = "<group>"; };
 		14374FB52B989FD700131332 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -202,6 +208,7 @@
 		048E7C712C32ACB000B653F4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				0E4F46A32D13B80000BB74F6 /* Confetti */,
 				0E35E76D2D123B660003B857 /* PolaroidCircle */,
 				14BEC9942C2DC39B009D8493 /* ThreadChatView.swift */,
 				048E7C6B2C2F3C6000B653F4 /* FriendsView.swift */,
@@ -491,6 +498,16 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		0E4F46A32D13B80000BB74F6 /* Confetti */ = {
+			isa = PBXGroup;
+			children = (
+				0E4F46A82D13B82900BB74F6 /* SuccessView.swift */,
+				0E4F46A62D13B80F00BB74F6 /* ConfettiFallView.swift */,
+				0E4F46A42D13B80900BB74F6 /* ConfettiView.swift */,
+			);
+			path = Confetti;
+			sourceTree = "<group>";
+		};
 		14374FA52B989FD500131332 = {
 			isa = PBXGroup;
 			children = (
@@ -714,11 +731,14 @@
 				0E35E76F2D123BC60003B857 /* PolaroidFrame.swift in Sources */,
 				0E4F46932D13878500BB74F6 /* ChallengeInfoCard.swift in Sources */,
 				0E35E7632D11E5430003B857 /* ParticipationState.swift in Sources */,
+				0E4F46A92D13B82900BB74F6 /* SuccessView.swift in Sources */,
 				0E4F46952D13997B00BB74F6 /* SplashRootView.swift in Sources */,
 				14BEC9952C2DC39B009D8493 /* ThreadChatView.swift in Sources */,
 				0E4F46702D133CCE00BB74F6 /* InfiniteScrollModifier.swift in Sources */,
+				0E4F46A72D13B81000BB74F6 /* ConfettiFallView.swift in Sources */,
 				0E4F46712D133CCE00BB74F6 /* MasonryLayout.swift in Sources */,
 				0E35E78D2D1301B20003B857 /* CustomSegmentedControl.swift in Sources */,
+				0E4F46A52D13B80900BB74F6 /* ConfettiView.swift in Sources */,
 				0E4F46862D1368DD00BB74F6 /* CircleView.swift in Sources */,
 				048E7C6C2C2F3C6000B653F4 /* FriendsView.swift in Sources */,
 				0E4F469C2D13A42100BB74F6 /* ExplorerViewModel.swift in Sources */,

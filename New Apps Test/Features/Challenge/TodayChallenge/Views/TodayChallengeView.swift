@@ -7,12 +7,12 @@
 
 import SwiftUI
 
-import SwiftUI
-
 struct TodayChallengeView: View {
     @State private var viewModel: TodayChallengeViewModel
     @State private var showingSubmission = false
     @State private var shouldAnimate = false
+    @State private var showConfetti = false
+    
     
     let hapticManager: HapticManaging
     
@@ -23,23 +23,28 @@ struct TodayChallengeView: View {
     
     var body: some View {
         NavigationStack {
-            ScrollView {
-                VStack(spacing: 24) {
-                    switch viewModel.state {
-                    case .loading:
-                        ProgressView()
-                            .scaleEffect(1.5)
-                        
-                    case .loaded(let challenge):
-                        challengeContent(challenge)
-                        
-                    case .error:
-                        ErrorView {
-                            await viewModel.loadChallenge()
+            ZStack {
+                ScrollView {
+                    VStack(spacing: 24) {
+                        switch viewModel.state {
+                        case .loading:
+                            ProgressView()
+                                .scaleEffect(1.5)
+                            
+                        case .loaded(let challenge):
+                            challengeContent(challenge)
+                            
+                        case .error:
+                            ErrorView {
+                                await viewModel.loadChallenge()
+                            }
                         }
                     }
+                    .padding()
                 }
-                .padding()
+                if showConfetti {
+                    ConfettiFallView(isActive: $showConfetti)
+                }
             }
         }
         .task {
@@ -89,6 +94,15 @@ struct TodayChallengeView: View {
             ) { imageData in
                 Task {
                     await viewModel.submitParticipation(image: imageData)
+                    
+                    if viewModel.hasParticipated {
+                        showConfetti = true
+                        hapticManager.playLandingSequence()
+                        
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                            showConfetti = false
+                        }
+                    }
                 }
             }
             .presentationDetents([.medium, .large])

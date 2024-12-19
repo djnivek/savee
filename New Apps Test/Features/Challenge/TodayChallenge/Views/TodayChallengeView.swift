@@ -13,12 +13,16 @@ struct TodayChallengeView: View {
     @State private var shouldAnimate = false
     @State private var showConfetti = false
     
-    
+    let purchaseService: PurchaseService
     let hapticManager: HapticManaging
     
-    init(viewModel: TodayChallengeViewModel, hapticManager: HapticManaging) {
+    init(viewModel: TodayChallengeViewModel,
+         hapticManager: HapticManaging,
+         purchaseService: PurchaseService = PurchaseService.shared)
+    {
         self.viewModel = viewModel
         self.hapticManager = hapticManager
+        self.purchaseService = purchaseService
     }
     
     var body: some View {
@@ -84,7 +88,9 @@ struct TodayChallengeView: View {
                 hapticManager: hapticManager,
                 onParticipate: { showingSubmission = true },
                 onPremiumAccess: {
-                    print("Premium access required")
+                    Task {
+                        try? await purchaseService.purchasePremium()
+                    }
                 }
             )
         }
